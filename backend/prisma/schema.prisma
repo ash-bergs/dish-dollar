@@ -9,3 +9,49 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Restaurant {
+  id          Int         @id @default(autoincrement())
+  name        String
+  email       String      @unique
+  password    String
+  address     String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  menuItems   MenuItem[]
+}
+
+model MenuItem {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  restaurant  Restaurant  @relation(fields: [restaurantId], references: [id])
+  restaurantId Int
+  ingredients IngredientOnMenuItem[]
+}
+
+model Ingredient {
+  id          Int                 @id @default(autoincrement())
+  name        String
+  currentCost Float
+  measurementUnit String
+  menuItems   IngredientOnMenuItem[]
+  costs       CostHistory[]
+}
+
+model IngredientOnMenuItem {
+  id          Int       @id @default(autoincrement())
+  menuItem    MenuItem @relation(fields: [menuItemId], references: [id])
+  ingredient  Ingredient @relation(fields: [ingredientId], references: [id])
+  menuItemId  Int
+  ingredientId Int
+}
+
+model CostHistory {
+  id          Int       @id @default(autoincrement())
+  ingredient  Ingredient @relation(fields: [ingredientId], references: [id])
+  cost        Float
+  date        DateTime
+  ingredientId Int
+}
