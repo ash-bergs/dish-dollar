@@ -1,0 +1,16 @@
+{
+  "name": "dish-dollar",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An adaptive restaurant management tool designed to optimize menu offerings by analyzing real-time ingredient costs and dish sales, enabling informed decision-making for menu rotations and profitability.",
+  "repository": "https://github.com/ash-bergs/dish-dollar.git",
+  "author": "Ash <65979049+ash-bergs@users.noreply.github.com>",
+  "license": "MIT",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "frontend-dev": "yarn workspace frontend dev"
+  }
+}
