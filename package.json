@@ -11,6 +11,7 @@
     "backend"
   ],
   "scripts": {
-    "frontend-dev": "yarn workspace frontend dev"
+    "frontend-dev": "yarn workspace frontend dev",
+    "backend-dev": "yarn workspace backend db-start && yarn workspace backend prisma-migrate && yarn workspace backend prisma-seed"
   }
 }

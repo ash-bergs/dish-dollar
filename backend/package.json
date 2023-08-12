@@ -12,6 +12,14 @@
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
+  "scripts": {
+    "db-start": "docker-compose -f ../docker-compose.yml up -d",
+    "db-stop": "docker-compose -f ../docker-compose.yml down",
+    "prisma-generate": "prisma generate",
+    "prisma-migrate": "prisma migrate dev",
+    "prisma-seed": "prisma db seed",
+    "prisma-reset": "prisma migrate reset"
+  },
   "dependencies": {
     "@prisma/client": "^5.1.1"
   }
