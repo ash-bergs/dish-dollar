@@ -56,3 +56,13 @@ model CostHistory {
   date        DateTime
   ingredientId Int
 }
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  name     String?
+  picture  String?
+  githubId Int?     @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
