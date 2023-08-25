@@ -1,3 +1,4 @@
+import AddItemForm from '@/components/forms/AddPantryItemForm';
 import Header from '@/components/Header';
 import Pantry from '@/components/Pantry';
 type PantryItem = {
@@ -85,6 +86,7 @@ export default function Home() {
   return (
     <main>
       <Header />
+      <AddItemForm />
       <Pantry pantryItems={pantryItems} />
     </main>
   );
