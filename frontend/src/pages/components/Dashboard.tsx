@@ -1,15 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  List,
-  ListItem,
-  Checkbox,
-  IconButton,
-} from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
-import { FaBars } from 'react-icons/fa';
+import { Box, Flex, Heading, List, ListItem, Checkbox } from '@chakra-ui/react';
 
 import RecipeCard from './RecipeCard';
 
@@ -18,53 +7,42 @@ const recipes = [
     title: 'Spaghetti',
     rating: 4,
     description: 'Delicious spaghetti with tomato sauce.',
+    timeToPrepare: 30,
+    numberOfIngredients: 6,
+    averageCostPerDish: 5,
   },
   {
     title: 'Grilled Cheese',
     rating: 5,
     description: 'Always a banger.',
+    timeToPrepare: 10,
+    numberOfIngredients: 3,
+    averageCostPerDish: 2,
   },
   {
     title: 'Smoked Salmon Salad',
     rating: 3,
     description: 'Not as popular with children.',
+    timeToPrepare: 15,
+    numberOfIngredients: 5,
+    averageCostPerDish: 8,
   },
   {
     title: 'Pancakes',
     rating: 5,
     description: 'A classic.',
+    timeToPrepare: 20,
+    numberOfIngredients: 5,
+    averageCostPerDish: 4,
   },
   {
     title: 'Chicken Noodle Soup',
     rating: 4,
     description: 'Perfect for a cold day.',
+    timeToPrepare: 30,
+    numberOfIngredients: 8,
+    averageCostPerDish: 6,
   },
-  {
-    title: 'Spaghetti',
-    rating: 4,
-    description: 'Delicious spaghetti with tomato sauce.',
-  },
-  {
-    title: 'Grilled Cheese',
-    rating: 5,
-    description: 'Always a banger.',
-  },
-  {
-    title: 'Smoked Salmon Salad',
-    rating: 3,
-    description: 'Not as popular with children.',
-  },
-  {
-    title: 'Pancakes',
-    rating: 5,
-    description: 'A classic.',
-  },
-  {
-    title: 'Chicken Noodle Soup',
-    rating: 4,
-    description: 'Perfect for a cold day.',
-  },
-  // ...more recipes
 ];
 
 const shoppingList = [
