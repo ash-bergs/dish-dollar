@@ -2,48 +2,7 @@ import { Box, Flex, Heading, List, ListItem, Checkbox } from '@chakra-ui/react';
 
 import RecipeCard from './RecipeCard';
 
-const recipes = [
-  {
-    title: 'Spaghetti',
-    rating: 4,
-    description: 'Delicious spaghetti with tomato sauce.',
-    timeToPrepare: 30,
-    numberOfIngredients: 6,
-    averageCostPerDish: 5,
-  },
-  {
-    title: 'Grilled Cheese',
-    rating: 5,
-    description: 'Always a banger.',
-    timeToPrepare: 10,
-    numberOfIngredients: 3,
-    averageCostPerDish: 2,
-  },
-  {
-    title: 'Smoked Salmon Salad',
-    rating: 3,
-    description: 'Not as popular with children.',
-    timeToPrepare: 15,
-    numberOfIngredients: 5,
-    averageCostPerDish: 8,
-  },
-  {
-    title: 'Pancakes',
-    rating: 5,
-    description: 'A classic.',
-    timeToPrepare: 20,
-    numberOfIngredients: 5,
-    averageCostPerDish: 4,
-  },
-  {
-    title: 'Chicken Noodle Soup',
-    rating: 4,
-    description: 'Perfect for a cold day.',
-    timeToPrepare: 30,
-    numberOfIngredients: 8,
-    averageCostPerDish: 6,
-  },
-];
+import { RECIPES } from '@/data';
 
 const shoppingList = [
   'Eggs',
@@ -68,7 +27,7 @@ const Dashboard = () => {
           <Heading size="lg" mb={4}>
             Your Recipes
           </Heading>
-          {recipes.map((recipe, index) => (
+          {RECIPES.map((recipe, index) => (
             <RecipeCard key={index} recipe={recipe} />
           ))}
         </Box>

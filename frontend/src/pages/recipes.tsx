@@ -1,10 +1,11 @@
 import Header from '@/components/Header';
+import AllRecipesView from '@/components/AllRecipesView';
 
 export default function Recipes() {
   return (
     <main>
       <Header />
-      <p>This is the recipes page.</p>
+      <AllRecipesView />
     </main>
   );
 }
