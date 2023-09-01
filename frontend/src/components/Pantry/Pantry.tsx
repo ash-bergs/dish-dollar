@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Flex, Grid, Checkbox, VStack, Heading } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
+/** component imports */
+import AddItemForm from '@/components/forms/AddItemForm.pantry';
+
 //TODO: add types
 type PantryItem = {
   item: string;
@@ -56,12 +59,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
 
   return (
     <Box height="calc(100vh - 180px)" p={8}>
-      <Box
-        h="80%"
-        display="grid"
-        gridTemplateColumns="repeat(auto-fill, minmax(350px, 1fr))"
-        gap={2}
-      >
+      <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={2}>
         {pantryOrder.map((type) => (
           <Box key={type} w="100%">
             <Flex mb={3}>
@@ -79,7 +77,8 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
             </VStack>
           </Box>
         ))}
-      </Box>
+      </Grid>
+      <AddItemForm />
     </Box>
   );
 };
