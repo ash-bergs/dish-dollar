@@ -25,7 +25,7 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
       marginBottom={4}
       borderRadius="md"
       cursor="pointer"
-      _hover={{ shadow: 'md', transform: 'scale(1.02)' }}
+      _hover={{ shadow: 'md', transform: 'scale(1.01)' }}
       transition="all 0.2s"
       onMouseEnter={() => setShowDetails(true)}
       onMouseLeave={() => setShowDetails(false)}
