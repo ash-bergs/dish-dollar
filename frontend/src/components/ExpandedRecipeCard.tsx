@@ -52,7 +52,7 @@ type Props = {
   recipe: Recipe;
 };
 
-const RecipeCard: React.FC<Props> = ({ recipe }) => {
+const ExpandedRecipeCard: React.FC<Props> = ({ recipe }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -97,4 +97,4 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
   );
 };
 
-export default RecipeCard;
+export default ExpandedRecipeCard;
