@@ -1,27 +1,44 @@
+import Link from 'next/link';
 import { Box, Flex, HStack, IconButton } from '@chakra-ui/react';
 import { FaBars } from 'react-icons/fa';
 
+const linkItems = [
+  {
+    name: 'Home',
+    href: '/',
+  },
+  {
+    name: 'Recipes',
+    href: '/recipes',
+  },
+  {
+    name: 'Pantry',
+    href: '/pantry',
+  },
+];
+
 type NavLinkProps = {
-  children: React.ReactNode;
+  link: {
+    name: string;
+    href: string;
+  };
 };
 
-const links = ['Home', 'Recipes', 'Pantry'];
-
-const NavLink: React.FC<NavLinkProps> = ({ children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ link: { name, href } }) => {
   return (
     <Box
-      as="a"
+      as={Link}
       px={2}
       py={1}
       rounded="md"
-      href={'#'}
+      href={href}
       _hover={{
         textDecoration: 'none',
         bg: 'gray.200',
       }}
       transition={'all 0.2s'}
     >
-      {children}
+      {name}
     </Box>
   );
 };
@@ -37,8 +54,8 @@ const Header = () => {
         px={4}
       >
         <HStack spacing={8} alignItems="center">
-          {links.map((link) => (
-            <NavLink key={link}>{link}</NavLink>
+          {linkItems.map((link) => (
+            <NavLink link={link} key={link.name} />
           ))}
         </HStack>
         <IconButton aria-label="Menu" icon={<FaBars />} />
