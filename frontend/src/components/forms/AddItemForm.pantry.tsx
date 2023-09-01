@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Select, Checkbox, VStack } from '@chakra-ui/react';
+import { Box, Button, Input, Checkbox, VStack } from '@chakra-ui/react';
+import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
+
+import { Select } from '@/components/inputs/';
+
+const foodTypeOptions = [
+  { value: 'dairy', label: 'Dairy', icon: <TbMilk /> },
+  { value: 'produce', label: 'Produce', icon: <TbApple /> },
+  { value: 'pantry', label: 'Pantry', icon: <TbFridge /> },
+  { value: 'staple', label: 'Staple', icon: <TbPin /> },
+  { value: 'frozen', label: 'Frozen', icon: <TbIceCream /> },
+];
+
+const currencyTypeOptions = [
+  { value: 'dollars', label: 'Dollars' },
+  { value: 'pounds', label: 'Pounds' },
+];
 
 const AddItemForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [itemName, setItemName] = useState('');
-  const [itemType, setItemType] = useState('dairy'); // default to 'dairy'
+  const [itemType, setItemType] = useState('category'); // default to 'dairy'
   const [cost, setCost] = useState('');
   const [unit, setUnit] = useState('dollars'); // default to 'dollars'
 
@@ -23,25 +39,21 @@ const AddItemForm: React.FC = () => {
             onChange={(e) => setItemName(e.target.value)}
           />
           <Select
+            options={foodTypeOptions}
             value={itemType}
-            onChange={(e) => setItemType(e.target.value)}
-          >
-            <option value="dairy">Dairy</option>
-            <option value="produce">Produce</option>
-            <option value="pantry">Pantry</option>
-            <option value="staple">Staple</option>
-            <option value="frozen">Frozen</option>
-          </Select>
+            onChange={(value) => setItemType(value)}
+          />
           <Input
             placeholder="Cost"
             type="number"
             value={cost}
             onChange={(e) => setCost(e.target.value)}
           />
-          <Select value={unit} onChange={(e) => setUnit(e.target.value)}>
-            <option value="dollars">Dollars</option>
-            <option value="pounds">Pounds</option>
-          </Select>
+          <Select
+            options={currencyTypeOptions}
+            value={unit}
+            onChange={(value) => setUnit(value)}
+          />
           <Button onClick={handleAddItem}>Submit</Button>
         </VStack>
       )}
