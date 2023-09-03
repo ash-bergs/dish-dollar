@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RECIPES } from '@/data';
-import ExpandedRecipeCard from './ExpandedRecipeCard';
+import ExpandedRecipeCard from './RecipeCard';
 import {
   Input,
   Box,
