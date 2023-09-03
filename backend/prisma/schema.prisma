@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
   seed = "prisma/seed.ts"
@@ -11,52 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Restaurant {
-  id          Int         @id @default(autoincrement())
-  name        String
-  email       String      @unique
-  password    String
-  address     String
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  menuItems   MenuItem[]
-}
-
-model MenuItem {
-  id          Int         @id @default(autoincrement())
-  name        String
-  description String
-  price       Float
-  restaurant  Restaurant  @relation(fields: [restaurantId], references: [id])
-  restaurantId Int
-  ingredients IngredientOnMenuItem[]
-}
-
-model Ingredient {
-  id          Int                 @id @default(autoincrement())
-  name        String
-  currentCost Float
-  measurementUnit String
-  menuItems   IngredientOnMenuItem[]
-  costs       CostHistory[]
-}
-
-model IngredientOnMenuItem {
-  id          Int       @id @default(autoincrement())
-  menuItem    MenuItem @relation(fields: [menuItemId], references: [id])
-  ingredient  Ingredient @relation(fields: [ingredientId], references: [id])
-  menuItemId  Int
-  ingredientId Int
-}
-
-model CostHistory {
-  id          Int       @id @default(autoincrement())
-  ingredient  Ingredient @relation(fields: [ingredientId], references: [id])
-  cost        Float
-  date        DateTime
-  ingredientId Int
-}
-
 model User {
   id       Int      @id @default(autoincrement())
   email    String   @unique
@@ -65,4 +16,43 @@ model User {
   githubId Int?     @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Pantry {
+  id      Int     @id @default(autoincrement())
+  userId  Int     // This will be a foreign key to User.id in the database
+}
+
+model PantryIngredient {
+  id            Int     @id @default(autoincrement())
+  pantryId      Int     // This will be a foreign key to Pantry.id in the database
+  ingredientId  Int     // This will be a foreign key to Ingredient.id in the database
+  quantityInStock Float
+}
+
+model Ingredient {
+  id    Int    @id @default(autoincrement())
+  name  String
+}
+
+model RecipeIngredient {
+  id           Int    @id @default(autoincrement())
+  recipeId     Int    // This will be a foreign key to Recipe.id in the database
+  ingredientId Int    // This will be a foreign key to Ingredient.id in the database
+  quantity     Float
+  unit         String
+  substitutions Int[] 
+}
+
+model Recipe {
+  id                Int              @id @default(autoincrement())
+  title             String
+  description       String
+  category          String
+  rating            Int
+  timeToPrepare     Int
+  image             String?
+  averageCostPerDish Float
+  instructions      String[]
+  userId            Int             // This will be a foreign key to User.id in the database
 }
