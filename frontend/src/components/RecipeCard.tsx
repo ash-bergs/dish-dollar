@@ -2,14 +2,7 @@ import { useState } from 'react';
 import { Box, Collapse, Flex, Heading, Text } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
-export type Recipe = {
-  title: string;
-  rating: number;
-  description: string;
-  timeToPrepare: number;
-  numberOfIngredients: number;
-  averageCostPerDish: number;
-};
+import type { Recipe } from '@/types';
 
 type Props = {
   recipe: Recipe;
@@ -17,6 +10,8 @@ type Props = {
 
 const RecipeCard: React.FC<Props> = ({ recipe }) => {
   const [showDetails, setShowDetails] = useState(false);
+
+  const numberOfIngredients = recipe.ingredients.length;
 
   return (
     <Box
@@ -49,7 +44,7 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
             <strong>Time to Prepare:</strong> {recipe.timeToPrepare} mins
           </Text>
           <Text>
-            <strong>Number of Ingredients:</strong> {recipe.numberOfIngredients}
+            <strong>Number of Ingredients:</strong> {numberOfIngredients}
           </Text>
           <Text>
             <strong>Average Cost / Dish:</strong> ${recipe.averageCostPerDish}

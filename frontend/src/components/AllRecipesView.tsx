@@ -4,6 +4,7 @@ import ExpandedRecipeCard from './ExpandedRecipeCard';
 import {
   Input,
   Box,
+  Flex,
   Radio,
   RadioGroup,
   Stack,
@@ -58,11 +59,11 @@ const AllRecipesView = () => {
         </RadioGroup>
       </Box>
 
-      <Box as="ul">
+      <Flex gap={2} flexWrap={'wrap'}>
         {filteredRecipes.map((recipe, index) => (
           <ExpandedRecipeCard key={index} recipe={recipe} />
         ))}
-      </Box>
+      </Flex>
     </Box>
   );
 };
