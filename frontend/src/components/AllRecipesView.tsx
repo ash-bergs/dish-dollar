@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RECIPES } from '@/data';
-import ExpandedRecipeCard from './RecipeCard';
+import ExpandedRecipeCard from './RecipeCard/RecipeCard';
 import {
   Input,
   Box,
@@ -59,7 +59,7 @@ const AllRecipesView = () => {
         </RadioGroup>
       </Box>
 
-      <Flex gap={2} flexWrap={'wrap'}>
+      <Flex gap={6} flexWrap={'wrap'} px={8}>
         {filteredRecipes.map((recipe, index) => (
           <ExpandedRecipeCard key={index} recipe={recipe} />
         ))}

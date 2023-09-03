@@ -1,15 +1,20 @@
-import { Badge, Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
+import { Badge, Box, Flex, Heading, IconButton, Text } from '@chakra-ui/react';
+import {
+  AddIcon,
+  ExternalLinkIcon,
+  StarIcon,
+  QuestionIcon,
+} from '@chakra-ui/icons';
 
 import type { Recipe } from '@/types';
+
+import RecipeImage from '@/components/RecipeCard/Image';
+import StarRating from '@/components/RecipeCard/StarRating';
 
 type Props = {
   recipe: Recipe;
 };
 
-type StarRatingProps = {
-  rating: number;
-};
 type CardWrapperProps = {
   children: React.ReactNode;
 };
@@ -18,12 +23,10 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
   return (
     <CardWrapper>
       <RecipeImage recipe={recipe} />
-
       <Box px={4} py={2}>
         <Heading size="md">{recipe.title}</Heading>
         <StarRating rating={recipe.rating} />
         <Text mt={2}>{recipe.description}</Text>
-
         <Text>
           <strong>Prep:</strong>{' '}
           <Badge colorScheme="red">{recipe.timeToPrepare} mins</Badge>
@@ -51,52 +54,48 @@ const CardWrapper: React.FC<CardWrapperProps> = ({ children }) => {
       w={{ base: '100%', md: '60%', xl: '40%' }}
       maxWidth="300px"
       minWidth="250px"
-      _hover={{ shadow: 'md', transform: 'scale(1.01)' }}
       transition="all 0.2s"
+      _hover={{
+        transform: 'scale(1.05)',
+        '.action-buttons': {
+          display: 'flex',
+        },
+      }}
+      position="relative"
     >
+      <ActionButtonSet />
       {children}
     </Flex>
   );
 };
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
-  return (
-    <Flex mt={2}>
-      {Array(5)
-        .fill('')
-        .map((_, i) => (
-          <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
-        ))}
-    </Flex>
-  );
+const buttonStyles = {
+  borderRadius: 'full',
 };
 
-const RecipeImage: React.FC<Props> = ({ recipe }) => {
-  const recipeImage = recipe.image || '/stock-salad.avif';
-
+const ActionButtonSet: React.FC = () => {
   return (
-    <Box
-      className="recipe-card__image-container"
-      w="90%" // width relative to the card's width
-      h="0"
-      paddingBottom="80%" // creates a square aspect ratio
-      overflow="hidden"
-      borderRadius="md"
-      alignSelf="center"
-      mt={4}
-      position="relative"
+    <Flex
+      direction="column"
+      position="absolute"
+      top="20px"
+      right="20px"
+      gap={2}
+      zIndex={3}
+      display="none" // Initially hide
+      className="action-buttons" // Used to show on hover of CardWrapper
     >
-      <Image
-        src={recipeImage}
-        alt={recipe.title}
-        objectFit="cover"
-        objectPosition="center"
-        w="100%"
-        h="100%"
-        position="absolute"
-        top="0"
-        left="0"
+      <IconButton {...buttonStyles} icon={<AddIcon />} aria-label="Add" />
+      <IconButton
+        {...buttonStyles}
+        icon={<ExternalLinkIcon />}
+        aria-label="Share"
       />
-    </Box>
+      <IconButton
+        {...buttonStyles}
+        icon={<QuestionIcon />}
+        aria-label="More Actions"
+      />
+    </Flex>
   );
 };
