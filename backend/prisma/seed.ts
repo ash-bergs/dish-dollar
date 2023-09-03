@@ -18,6 +18,31 @@ async function main() {
       data: seed,
     });
   }
+
+  // Get all ingredients
+  const ingredients = await prisma.ingredient.findMany();
+
+  // Create a pantry for user with id 1
+  const pantry = await prisma.pantry.create({
+    data: {
+      userId: 1,
+    },
+  });
+
+  // Use a subset of ingredients to populate the pantry
+  for (const ingredient of ingredients.slice(0, 16)) {
+    const initialAmount = Math.round(Math.random() * 20 + 5);
+
+    await prisma.pantryIngredient.create({
+      data: {
+        pantryId: pantry.id,
+        ingredientId: ingredient.id,
+        initialAmount: initialAmount,
+        quantityInStock: Math.random(),
+        unit: 'unit',
+      },
+    });
+  }
 }
 
 main()

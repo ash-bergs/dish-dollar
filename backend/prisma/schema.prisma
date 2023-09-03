@@ -28,11 +28,13 @@ model PantryIngredient {
   pantryId      Int     // This will be a foreign key to Pantry.id in the database
   ingredientId  Int     // This will be a foreign key to Ingredient.id in the database
   quantityInStock Float
+  initialAmount Int? // Allow option to track initial amount of ingredient 
+  unit          String?
 }
 
 model Ingredient {
   id    Int    @id @default(autoincrement())
-  name  String
+  name  String // TODO: should this be unique? Should the table have more on it so we don't repeat ourselves?
 }
 
 model RecipeIngredient {
