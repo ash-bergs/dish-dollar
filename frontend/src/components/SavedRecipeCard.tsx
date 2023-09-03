@@ -4,13 +4,19 @@ import { StarIcon } from '@chakra-ui/icons';
 
 import type { Recipe } from '@/types';
 
+// SavedRecipeCard refers to the fact this card shows up on the dashboard
+// a user created or saved this recipe to their account
+// it's displayed differently than the standard recipe card
+
 type Props = {
   recipe: Recipe;
 };
 
-const ExpandedRecipeCard: React.FC<Props> = ({ recipe }) => {
+const SavedRecipeCard: React.FC<Props> = ({ recipe }) => {
   const [showDetails, setShowDetails] = useState(false);
+
   const numberOfIngredients = recipe.ingredients.length;
+
   return (
     <Box
       p={4}
@@ -53,4 +59,4 @@ const ExpandedRecipeCard: React.FC<Props> = ({ recipe }) => {
   );
 };
 
-export default ExpandedRecipeCard;
+export default SavedRecipeCard;

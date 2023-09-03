@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { RECIPES } from '@/data';
-import ExpandedRecipeCard from './ExpandedRecipeCard';
+import ExpandedRecipeCard from './RecipeCard/RecipeCard';
 import {
   Input,
   Box,
+  Flex,
   Radio,
   RadioGroup,
   Stack,
@@ -58,11 +59,11 @@ const AllRecipesView = () => {
         </RadioGroup>
       </Box>
 
-      <Box as="ul">
+      <Flex gap={6} flexWrap={'wrap'} px={8}>
         {filteredRecipes.map((recipe, index) => (
           <ExpandedRecipeCard key={index} recipe={recipe} />
         ))}
-      </Box>
+      </Flex>
     </Box>
   );
 };

@@ -27,7 +27,7 @@ export type Recipe = {
   category: string;
   title: string;
   rating: number;
-  image: string;
+  image?: string;
   description: string;
   timeToPrepare: number;
   averageCostPerDish: number;

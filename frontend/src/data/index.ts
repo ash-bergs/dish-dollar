@@ -19,11 +19,10 @@ export const RECIPES = [
   {
     title: 'Spaghetti',
     rating: 4,
-    description: 'Delicious spaghetti with tomato sauce.',
+    description: 'Delicious spaghetti.',
     timeToPrepare: 30,
     averageCostPerDish: 5,
     category: 'Dinner',
-    image: 'path_to_image.jpg', // You'll want to add an actual image path here
     ingredients: [
       { ...ingredients[0], quantity: 200, unit: 'grams' },
       { ...ingredients[1], quantity: 100, unit: 'grams' },
@@ -42,7 +41,6 @@ export const RECIPES = [
     timeToPrepare: 10,
     averageCostPerDish: 2,
     category: 'Lunch',
-    image: 'path_to_image.jpg', // You'll want to add an actual image path here
     ingredients: [
       { ...ingredients[4], quantity: 2, unit: 'slices' },
       { ...ingredients[5], quantity: 2, unit: 'slices' },
@@ -63,7 +61,6 @@ export const RECIPES = [
     timeToPrepare: 15,
     averageCostPerDish: 8,
     category: 'Lunch',
-    image: 'path_to_image.jpg', // You'll want to add an actual image path here
     ingredients: [
       { ...ingredients[7], quantity: 100, unit: 'grams' },
       { ...ingredients[6], quantity: 100, unit: 'grams' },
@@ -90,7 +87,6 @@ export const RECIPES = [
     timeToPrepare: 20,
     averageCostPerDish: 4,
     category: 'Breakfast',
-    image: 'path_to_image.jpg', // You'll want to add an actual image path here
     ingredients: [
       { ...ingredients[9], quantity: 200, unit: 'grams' },
       { ...ingredients[11], quantity: 100, unit: 'grams' },

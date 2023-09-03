@@ -68,6 +68,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
                 {type}
               </Heading>
             </Flex>
+            {/** TODO: Build shopping list component - add toggle for hiding and viewing checked off items  */}
             <VStack align="start" spacing={2}>
               {groupedItems[type]?.map((item) => (
                 <Checkbox key={item.item} isDisabled={item.avoid}>
