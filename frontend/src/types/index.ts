@@ -7,20 +7,19 @@
 
 // Ingredient should just be id, name, and substitutions - these will exist on the actual table in the database
 // but we need to 'enrich' the data we get from the database with the quantity and unit for the recipe
-// should the substitution be an 'enriched' item as well?
 // we'll no longer need a "numberOfIngredients" field, we can just count the number of ingredients in the array
 
 // database model should look like this
 export type Ingredient = {
   id: number;
   name: string;
-  substitutions: number[];
 };
 
 // recipe needs quantity and unit:
 export type IngredientWithQuantity = Ingredient & {
   quantity: number;
   unit: string;
+  substitutions: number[];
 };
 
 export type Recipe = {
