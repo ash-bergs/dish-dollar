@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { Box, Collapse, Flex, Heading, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Collapse,
+  Flex,
+  Heading,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
 import type { Recipe } from '@/types';
@@ -13,6 +20,7 @@ type Props = {
 };
 
 const SavedRecipeCard: React.FC<Props> = ({ recipe }) => {
+  const cardBg = useColorModeValue('gray.100', 'gray.700');
   const [showDetails, setShowDetails] = useState(false);
 
   const numberOfIngredients = recipe.ingredients.length;
@@ -20,7 +28,7 @@ const SavedRecipeCard: React.FC<Props> = ({ recipe }) => {
   return (
     <Box
       p={4}
-      bg="gray.100"
+      bg={cardBg}
       marginBottom={4}
       borderRadius="md"
       cursor="pointer"
