@@ -1,4 +1,11 @@
-import { Badge, Box, Flex, Heading, Text } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  Flex,
+  Heading,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 import type { Recipe } from '@/types';
 
@@ -38,11 +45,12 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
 export default RecipeCard;
 
 const CardWrapper: React.FC<CardWrapperProps> = ({ children }) => {
+  const cardBg = useColorModeValue('gray.100', 'gray.700');
   return (
     <Flex
       direction="column"
       justifyContent={'center'}
-      bg="gray.100"
+      bg={cardBg}
       borderRadius="md"
       cursor="pointer"
       boxShadow="base"

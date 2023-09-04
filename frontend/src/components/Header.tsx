@@ -1,6 +1,13 @@
 import Link from 'next/link';
-import { Box, Flex, HStack, IconButton } from '@chakra-ui/react';
-import { FaBars } from 'react-icons/fa';
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  useColorMode,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const linkItems = [
   {
@@ -44,8 +51,11 @@ const NavLink: React.FC<NavLinkProps> = ({ link: { name, href } }) => {
 };
 
 const Header = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const headerBg = useColorModeValue('gray.100', 'gray.700');
+
   return (
-    <Box bg="gray.100">
+    <Box bg={headerBg}>
       <Flex
         justifyContent="space-between"
         alignItems="center"
@@ -58,7 +68,11 @@ const Header = () => {
             <NavLink link={link} key={link.name} />
           ))}
         </HStack>
-        <IconButton aria-label="Menu" icon={<FaBars />} />
+        <IconButton
+          aria-label="Toggle Dark Mode"
+          icon={colorMode === 'dark' ? <FaSun /> : <FaMoon />}
+          onClick={toggleColorMode}
+        />{' '}
       </Flex>
     </Box>
   );
