@@ -1,11 +1,10 @@
-import Header from '@/components/Header';
+import Layout from '@/components/layout/Layout';
 import AllRecipesView from '@/components/AllRecipesView';
 
 export default function Recipes() {
   return (
-    <main>
-      <Header />
+    <Layout>
       <AllRecipesView />
-    </main>
+    </Layout>
   );
 }

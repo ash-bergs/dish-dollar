@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button } from '@chakra-ui/react';
+import Layout from '@/components/layout/Layout';
 import Dashboard from '../components/Dashboard';
-import Header from '../components/Header';
+
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { Button } from '@chakra-ui/react';
 
 /**
  * const { data: session } = useSession();
@@ -22,9 +23,8 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 export default function Home() {
   return (
-    <main>
-      <Header />
+    <Layout>
       <Dashboard />
-    </main>
+    </Layout>
   );
 }

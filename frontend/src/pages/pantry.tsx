@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Layout from '@/components/layout/Layout';
 import Pantry from '@/components/Pantry';
 
 type PantryItem = {
@@ -84,9 +84,8 @@ const pantryItems: PantryItem[] = [
 
 export default function Home() {
   return (
-    <main>
-      <Header />
+    <Layout>
       <Pantry pantryItems={pantryItems} />
-    </main>
+    </Layout>
   );
 }
