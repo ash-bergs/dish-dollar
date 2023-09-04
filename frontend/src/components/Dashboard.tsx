@@ -24,7 +24,7 @@ const Dashboard = () => {
       <Flex flexGrow={1} overflow="hidden" height="calc(100vh - 180px)">
         {/* Recipe Cards */}
         <Box flex="2" overflowY="auto" p={4} borderRightWidth="1px">
-          <Heading size="lg" mb={4}>
+          <Heading size="xl" mb={4}>
             Your Recipes
           </Heading>
           {RECIPES.map((recipe, index) => (
