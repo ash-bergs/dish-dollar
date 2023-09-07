@@ -33,3 +33,31 @@ export type Recipe = {
   ingredients: IngredientWithQuantity[];
   instructions: string[];
 };
+
+/**
+ * model PantryIngredient {
+  id            Int     @id @default(autoincrement())
+  pantryId      Int     // This will be a foreign key to Pantry.id in the database
+  ingredientId  Int     // This will be a foreign key to Ingredient.id in the database
+  quantityInStock Float
+  initialAmount Int? // Allow option to track initial amount of ingredient 
+  unit          String?
+  // TODO: type - everything below this line is a TODO
+  type         String? // This will be a foreign key to Ingredient.type in the database? Or should it be an enum?
+  cost        Float? // Allow option to track cost of ingredient
+  costUnit    String?
+}
+ */
+
+export type PantryItem = {
+  id: number;
+  pantryId: number;
+  ingredientId: number;
+  initialAmount: number;
+  unit: string;
+  quantityInStock: number;
+  item: string;
+  type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
+  cost: number;
+  costUnit: string;
+};

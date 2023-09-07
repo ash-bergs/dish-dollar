@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Circle,
-  Flex,
-  Grid,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-  Text,
-  VStack,
-  Heading,
-} from '@chakra-ui/react';
+import { Box, Flex, Grid, VStack, Heading } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
-//TODO: add types
+import PantryItemCard from './PantryItemCard';
+
 type PantryItem = {
   id: number;
   pantryId: number;
@@ -49,12 +38,6 @@ const getIconForType = (type: PantryItem['type']) => {
     default:
       return null;
   }
-};
-
-const getStockStatusColor = (quantity: number) => {
-  if (quantity > 0.75) return 'green';
-  if (quantity > 0.25) return 'yellow';
-  return 'red';
 };
 
 // type for the accumulator - an object where the keys are the type of the item
@@ -106,35 +89,11 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
             </Flex>
             <VStack align="start" spacing={2}>
               {groupedItems[type]?.map((item) => (
-                <Grid
+                <PantryItemCard
                   key={item.id}
-                  alignContent="center"
-                  alignItems="center"
-                  gap={1}
-                  gridTemplateColumns="min-content 1fr 1fr"
-                >
-                  <Circle
-                    size="8px"
-                    bg={getStockStatusColor(item.quantityInStock)}
-                    mr={2}
-                  />
-                  <Text>{item.item}</Text>
-                  <Slider
-                    aria-label="stock-slider"
-                    colorScheme="teal"
-                    defaultValue={item.quantityInStock * 100}
-                    min={0}
-                    max={100}
-                    onChangeEnd={(value) =>
-                      handleStockChange(item.id, value / 100)
-                    }
-                  >
-                    <SliderTrack>
-                      <SliderFilledTrack />
-                    </SliderTrack>
-                    <SliderThumb />
-                  </Slider>
-                </Grid>
+                  item={item}
+                  handleChange={handleStockChange}
+                />
               ))}
             </VStack>
           </Box>
