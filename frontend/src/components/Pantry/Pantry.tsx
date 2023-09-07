@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Box, Flex, Grid, Checkbox, VStack, Heading } from '@chakra-ui/react';
+import { Box, Flex, Grid, VStack, Heading } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
-//TODO: add types
+import PantryItemCard from './PantryItemCard';
+
 type PantryItem = {
+  id: number;
+  pantryId: number;
+  ingredientId: number;
+  initialAmount: number;
+  unit: string;
+  quantityInStock: number;
   item: string;
   type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
-  avoid: boolean;
   cost: number;
   costUnit: string;
 };
@@ -39,11 +45,24 @@ const getIconForType = (type: PantryItem['type']) => {
 type GroupedPantryItems = Record<string, PantryItem[]>;
 
 const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
-  const groupedItems = pantryItems.reduce<GroupedPantryItems>((acc, item) => {
-    if (!acc[item.type]) acc[item.type] = [];
-    acc[item.type].push(item);
-    return acc;
-  }, {});
+  const [currentPantryItems, setPantryItems] = useState(pantryItems);
+  const groupedItems = currentPantryItems.reduce<GroupedPantryItems>(
+    (acc, item) => {
+      if (!acc[item.type]) acc[item.type] = [];
+      acc[item.type].push(item);
+      return acc;
+    },
+    {}
+  );
+
+  const handleStockChange = (id: number, newValue: number) => {
+    // Assuming you're using a local state to hold the data. If you're using a global state manager or API, adjust accordingly.
+    setPantryItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantityInStock: newValue } : item
+      )
+    );
+  };
 
   // in the future I want users to be able to re-order the pantry type columns
   // look into react-beautiful-dnd for this
@@ -61,19 +80,20 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
       <Toolbar />
       <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={2}>
         {pantryOrder.map((type) => (
-          <Box key={type} w="100%">
+          <Box key={type} w="100%" cursor="pointer">
             <Flex mb={3}>
               {getIconForType(type)}
               <Heading size="md" ml={2}>
                 {type}
               </Heading>
             </Flex>
-            {/** TODO: Build shopping list component - add toggle for hiding and viewing checked off items  */}
             <VStack align="start" spacing={2}>
               {groupedItems[type]?.map((item) => (
-                <Checkbox key={item.item} isDisabled={item.avoid}>
-                  {item.item}
-                </Checkbox>
+                <PantryItemCard
+                  key={item.id}
+                  item={item}
+                  handleChange={handleStockChange}
+                />
               ))}
             </VStack>
           </Box>
