@@ -126,3 +126,141 @@ export const RECIPES = [
     ],
   },
 ];
+
+type PantryItem = {
+  id: number;
+  pantryId: number;
+  ingredientId: number;
+  initialAmount: number;
+  unit: string;
+  quantityInStock: number;
+  item: string;
+  type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
+  cost: number;
+  costUnit: string;
+};
+
+/**
+ * model PantryIngredient {
+  id            Int     @id @default(autoincrement())
+  pantryId      Int     // This will be a foreign key to Pantry.id in the database
+  ingredientId  Int     // This will be a foreign key to Ingredient.id in the database
+  quantityInStock Float
+  initialAmount Int? // Allow option to track initial amount of ingredient 
+  unit          String?
+  // TODO: type - everything below this line is a TODO
+  type         String? // This will be a foreign key to Ingredient.type in the database? Or should it be an enum?
+  cost        Float? // Allow option to track cost of ingredient
+  costUnit    String?
+}
+ */
+export const pantryItems: PantryItem[] = [
+  {
+    id: 1,
+    pantryId: 1,
+    item: 'Milk',
+    ingredientId: 10,
+    type: 'dairy',
+    initialAmount: 1,
+    unit: 'gallon',
+    quantityInStock: 0.2,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 2,
+    pantryId: 1,
+    item: 'Eggs',
+    ingredientId: 11,
+    type: 'dairy',
+    initialAmount: 12,
+    unit: 'count',
+    quantityInStock: 0.5,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 3,
+    pantryId: 1,
+    item: 'Butter',
+    ingredientId: 12,
+    type: 'dairy',
+    initialAmount: 1,
+    unit: 'pound',
+    quantityInStock: 0.5,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 4,
+    pantryId: 1,
+    item: 'Cheese',
+    ingredientId: 13,
+    type: 'dairy',
+    initialAmount: 1,
+    unit: 'pound',
+    quantityInStock: 0.3,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 5,
+    pantryId: 1,
+    item: 'Apples',
+    ingredientId: 20,
+    type: 'produce',
+    initialAmount: 6,
+    unit: 'count',
+    quantityInStock: 1,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 6,
+    pantryId: 1,
+    item: 'Bananas',
+    ingredientId: 21,
+    type: 'produce',
+    initialAmount: 6,
+    unit: 'count',
+    quantityInStock: 0.5,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 7,
+    pantryId: 1,
+    item: 'Carrots',
+    ingredientId: 22,
+    type: 'produce',
+    initialAmount: 1,
+    unit: 'pound',
+    quantityInStock: 1,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 8,
+    pantryId: 1,
+    item: 'Potatoes',
+    ingredientId: 23,
+    type: 'produce',
+    initialAmount: 5,
+    unit: 'pound',
+    quantityInStock: 0.75,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+  {
+    id: 9,
+    pantryId: 1,
+    item: 'Onions',
+    ingredientId: 24,
+    type: 'produce',
+    initialAmount: 3,
+    unit: 'count',
+    quantityInStock: 0.75,
+    cost: 2.99,
+    costUnit: 'dollars',
+  },
+];

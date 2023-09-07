@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
-import { Box, Flex, Grid, Checkbox, VStack, Heading } from '@chakra-ui/react';
+import {
+  Box,
+  Circle,
+  Flex,
+  Grid,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+  Text,
+  VStack,
+  Heading,
+} from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
 //TODO: add types
 type PantryItem = {
+  id: number;
+  pantryId: number;
+  ingredientId: number;
+  initialAmount: number;
+  unit: string;
+  quantityInStock: number;
   item: string;
   type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
-  avoid: boolean;
   cost: number;
   costUnit: string;
 };
@@ -34,16 +51,35 @@ const getIconForType = (type: PantryItem['type']) => {
   }
 };
 
+const getStockStatusColor = (quantity: number) => {
+  if (quantity > 0.75) return 'green';
+  if (quantity > 0.25) return 'yellow';
+  return 'red';
+};
+
 // type for the accumulator - an object where the keys are the type of the item
 // Typescripts record utlity more info here: https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkt
 type GroupedPantryItems = Record<string, PantryItem[]>;
 
 const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
-  const groupedItems = pantryItems.reduce<GroupedPantryItems>((acc, item) => {
-    if (!acc[item.type]) acc[item.type] = [];
-    acc[item.type].push(item);
-    return acc;
-  }, {});
+  const [currentPantryItems, setPantryItems] = useState(pantryItems);
+  const groupedItems = currentPantryItems.reduce<GroupedPantryItems>(
+    (acc, item) => {
+      if (!acc[item.type]) acc[item.type] = [];
+      acc[item.type].push(item);
+      return acc;
+    },
+    {}
+  );
+
+  const handleStockChange = (id: number, newValue: number) => {
+    // Assuming you're using a local state to hold the data. If you're using a global state manager or API, adjust accordingly.
+    setPantryItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantityInStock: newValue } : item
+      )
+    );
+  };
 
   // in the future I want users to be able to re-order the pantry type columns
   // look into react-beautiful-dnd for this
@@ -61,19 +97,44 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
       <Toolbar />
       <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={2}>
         {pantryOrder.map((type) => (
-          <Box key={type} w="100%">
+          <Box key={type} w="100%" cursor="pointer">
             <Flex mb={3}>
               {getIconForType(type)}
               <Heading size="md" ml={2}>
                 {type}
               </Heading>
             </Flex>
-            {/** TODO: Build shopping list component - add toggle for hiding and viewing checked off items  */}
             <VStack align="start" spacing={2}>
               {groupedItems[type]?.map((item) => (
-                <Checkbox key={item.item} isDisabled={item.avoid}>
-                  {item.item}
-                </Checkbox>
+                <Grid
+                  key={item.id}
+                  alignContent="center"
+                  alignItems="center"
+                  gap={1}
+                  gridTemplateColumns="min-content 1fr 1fr"
+                >
+                  <Circle
+                    size="8px"
+                    bg={getStockStatusColor(item.quantityInStock)}
+                    mr={2}
+                  />
+                  <Text>{item.item}</Text>
+                  <Slider
+                    aria-label="stock-slider"
+                    colorScheme="teal"
+                    defaultValue={item.quantityInStock * 100}
+                    min={0}
+                    max={100}
+                    onChangeEnd={(value) =>
+                      handleStockChange(item.id, value / 100)
+                    }
+                  >
+                    <SliderTrack>
+                      <SliderFilledTrack />
+                    </SliderTrack>
+                    <SliderThumb />
+                  </Slider>
+                </Grid>
               ))}
             </VStack>
           </Box>
