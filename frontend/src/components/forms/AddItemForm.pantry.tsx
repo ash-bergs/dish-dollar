@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Checkbox, VStack } from '@chakra-ui/react';
+import {
+  Button,
+  Flex,
+  Grid,
+  Modal,
+  Input,
+  VStack,
+  ModalOverlay,
+  ModalContent,
+} from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 
 import { Select } from '@/components/inputs/';
@@ -17,47 +27,82 @@ const currencyTypeOptions = [
   { value: 'pounds', label: 'Pounds' },
 ];
 
+const unitOptions = [
+  { value: 'kg', label: 'Kilogram' },
+  { value: 'g', label: 'Gram' },
+  { value: 'l', label: 'Liter' },
+  { value: 'ml', label: 'Milliliter' },
+];
+
 const AddItemForm: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [itemName, setItemName] = useState('');
   const [itemType, setItemType] = useState('category'); // default to 'dairy'
   const [cost, setCost] = useState('');
-  const [unit, setUnit] = useState('dollars'); // default to 'dollars'
+  const [currency, setCurrency] = useState('dollars'); // default to 'dollars'
+  const [initialAmount, setInitialAmount] = useState('');
+  const [unit, setUnit] = useState('kg'); // default to 'kg'
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleAddItem = () => {
     // Logic for adding an item (e.g., send data to server)
   };
 
   return (
-    <Box>
-      <Button onClick={() => setIsOpen(!isOpen)}>Add an item</Button>
-      {isOpen && (
-        <VStack mt={4} spacing={4}>
-          <Input
-            placeholder="Item name"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-          />
-          <Select
-            options={foodTypeOptions}
-            value={itemType}
-            onChange={(value) => setItemType(value)}
-          />
-          <Input
-            placeholder="Cost"
-            type="number"
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
-          />
-          <Select
-            options={currencyTypeOptions}
-            value={unit}
-            onChange={(value) => setUnit(value)}
-          />
-          <Button onClick={handleAddItem}>Submit</Button>
-        </VStack>
-      )}
-    </Box>
+    <>
+      {!isOpen && <Button onClick={onOpen}>Add an item</Button>}
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent px={4} py={8}>
+          <VStack spacing={4}>
+            <Input
+              placeholder="Item name"
+              value={itemName}
+              onChange={(e) => setItemName(e.target.value)}
+              maxW="400px"
+            />
+            <Select
+              options={foodTypeOptions}
+              value={itemType}
+              onChange={(value) => setItemType(value)}
+            />
+            <Grid gridTemplateColumns="1fr 1fr" gap={4}>
+              <Input
+                placeholder="Initial amount"
+                type="number"
+                value={initialAmount}
+                onChange={(e) => setInitialAmount(e.target.value)}
+                maxW="400px"
+              />
+              <Select
+                options={unitOptions}
+                value={unit}
+                onChange={(value) => setUnit(value)}
+              />
+            </Grid>
+            <Grid gridTemplateColumns="1fr 1fr" gap={4}>
+              <Input
+                placeholder="Cost"
+                type="number"
+                value={cost}
+                onChange={(e) => setCost(e.target.value)}
+                maxW="400px"
+              />
+              <Select
+                options={currencyTypeOptions}
+                value={currency}
+                onChange={(value) => setCurrency(value)}
+              />
+            </Grid>
+            <Flex gap={4}>
+              <Button onClick={handleAddItem}>Submit</Button>
+              <Button onClick={onClose}>Cancel</Button>
+            </Flex>
+          </VStack>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 
