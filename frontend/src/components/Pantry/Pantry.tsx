@@ -80,7 +80,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
       <Toolbar />
       <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={2}>
         {pantryOrder.map((type) => (
-          <Box key={type} w="100%" cursor="pointer">
+          <Box key={type} w="100%">
             <Flex mb={3}>
               {getIconForType(type)}
               <Heading size="md" ml={2}>
