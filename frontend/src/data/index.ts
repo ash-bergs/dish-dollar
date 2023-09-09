@@ -133,7 +133,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 1,
     pantryId: 1,
-    item: 'Milk',
+    name: 'Milk',
     ingredientId: 10,
     type: 'dairy',
     initialAmount: 1,
@@ -145,7 +145,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 2,
     pantryId: 1,
-    item: 'Eggs',
+    name: 'Eggs',
     ingredientId: 11,
     type: 'dairy',
     initialAmount: 12,
@@ -157,7 +157,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 3,
     pantryId: 1,
-    item: 'Butter',
+    name: 'Butter',
     ingredientId: 12,
     type: 'dairy',
     initialAmount: 1,
@@ -169,7 +169,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 4,
     pantryId: 1,
-    item: 'Cheese',
+    name: 'Cheese',
     ingredientId: 13,
     type: 'dairy',
     initialAmount: 1,
@@ -181,7 +181,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 5,
     pantryId: 1,
-    item: 'Apples',
+    name: 'Apples',
     ingredientId: 20,
     type: 'produce',
     initialAmount: 6,
@@ -193,7 +193,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 6,
     pantryId: 1,
-    item: 'Bananas',
+    name: 'Bananas',
     ingredientId: 21,
     type: 'produce',
     initialAmount: 6,
@@ -205,7 +205,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 7,
     pantryId: 1,
-    item: 'Carrots',
+    name: 'Carrots',
     ingredientId: 22,
     type: 'produce',
     initialAmount: 1,
@@ -217,7 +217,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 8,
     pantryId: 1,
-    item: 'Potatoes',
+    name: 'Potatoes',
     ingredientId: 23,
     type: 'produce',
     initialAmount: 5,
@@ -229,7 +229,7 @@ export const pantryItems: PantryItem[] = [
   {
     id: 9,
     pantryId: 1,
-    item: 'Onions',
+    name: 'Onions',
     ingredientId: 24,
     type: 'produce',
     initialAmount: 3,

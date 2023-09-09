@@ -3,7 +3,7 @@ import { Box, Flex, Grid, VStack, Heading } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
-import PantryItemCard from './PantryItemCard';
+import PantryCard from '@/components/PantryCard';
 
 type PantryItem = {
   id: number;
@@ -12,7 +12,7 @@ type PantryItem = {
   initialAmount: number;
   unit: string;
   quantityInStock: number;
-  item: string;
+  name: string;
   type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
   cost: number;
   costUnit: string;
@@ -89,10 +89,10 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
             </Flex>
             <VStack align="start" spacing={2}>
               {groupedItems[type]?.map((item) => (
-                <PantryItemCard
+                <PantryCard
                   key={item.id}
                   item={item}
-                  handleChange={handleStockChange}
+                  // handleChange={handleStockChange}
                 />
               ))}
             </VStack>
