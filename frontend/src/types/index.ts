@@ -56,7 +56,7 @@ export type PantryItem = {
   initialAmount: number;
   unit: string;
   quantityInStock: number;
-  item: string;
+  name: string;
   type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
   cost: number;
   costUnit: string;
