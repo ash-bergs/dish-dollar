@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAtomValue } from 'jotai';
 import { Box, Icon, useColorModeValue } from '@chakra-ui/react';
 import { TbStar } from 'react-icons/tb';
 
@@ -6,6 +7,7 @@ import ItemDetail from './ItemDetail';
 import ItemActions from './ItemActions';
 import PantryDrawer from './PantryDrawer';
 import { PantryItem } from '@/types';
+import { activeCardDrawerAtom } from '@/lib/store/pantry.store';
 
 type PantryCardProps = {
   item: PantryItem;
@@ -13,9 +15,10 @@ type PantryCardProps = {
 };
 
 const PantryCard: React.FC<PantryCardProps> = ({ item }) => {
-  const cardBg = useColorModeValue('gray.100', 'jet');
-  const [show, setShow] = React.useState(false);
+  const activeCardDrawer = useAtomValue(activeCardDrawerAtom);
+  const isActiveCard = activeCardDrawer?.id === item.id;
 
+  const cardBg = useColorModeValue('white', 'jet');
   return (
     <>
       <Box
@@ -31,7 +34,6 @@ const PantryCard: React.FC<PantryCardProps> = ({ item }) => {
           transform: 'scale(1.02)',
         }}
         transition="all 0.2s ease-in-out"
-        onClick={() => setShow(!show)}
         zIndex={1}
       >
         <ItemDetail {...item} />
@@ -44,9 +46,9 @@ const PantryCard: React.FC<PantryCardProps> = ({ item }) => {
           color="#FFA987"
           cursor="pointer"
         />
-        <ItemActions />
+        <ItemActions {...item} />
       </Box>
-      <PantryDrawer show={show} />
+      <PantryDrawer show={isActiveCard} item={item} />
     </>
   );
 };
@@ -55,18 +57,3 @@ export default PantryCard;
 
 // TODO: When an item is favorited, used the filled star icon
 // what happens to favorited items? do they get moved to the top of the list? Do they get alerts when they're low, out of stock?
-/**
- * <Slider
-        aria-label="stock-slider"
-        colorScheme="teal"
-        defaultValue={item.quantityInStock * 100}
-        min={0}
-        max={100}
-        onChangeEnd={(value) => handleChange(item.id, value / 100)}
-      >
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
- */
