@@ -78,7 +78,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
   return (
     <Box height="calc(100vh - 180px)" p={8}>
       <Toolbar />
-      <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={2}>
+      <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={6}>
         {pantryOrder.map((type) => (
           <Box key={type} w="100%">
             <Flex mb={3}>

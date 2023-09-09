@@ -1,8 +1,18 @@
 import React from 'react';
-import { Box, Center, Icon, Text, useColorModeValue } from '@chakra-ui/react';
+import { useAtomValue } from 'jotai';
+import { Box, Center, Text } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import StockSlider from './StockSlider';
+import { activeCardDrawerAtom } from '@/lib/store/pantry.store';
+import type { PantryItem } from '@/types';
+
 const MotionBox = motion(Box);
+
+type PantryDrawerProps = {
+  show: boolean;
+  item: PantryItem;
+};
 
 /** animation stuff, should be moved to styles eventually, will probably reuse */
 const drawerVariants = {
@@ -15,12 +25,16 @@ const drawerVariants = {
   exit: { opacity: 0, y: '-100%', transition: { duration: 0.2 } },
 };
 
-const PantryDrawer = ({ show }: { show: boolean }) => {
+const PantryDrawer: React.FC<PantryDrawerProps> = (props) => {
+  const show = props.show;
+  const item = props.item;
+
+  const activeCardDrawer = useAtomValue(activeCardDrawerAtom);
   return (
     <AnimatePresence>
       {show && (
         <MotionBox
-          w="98%"
+          w="96%"
           mx="auto"
           bg="atomicTangerine"
           borderBottomRadius="lg"
@@ -31,9 +45,13 @@ const PantryDrawer = ({ show }: { show: boolean }) => {
           exit="exit"
           variants={drawerVariants}
         >
-          <Center h="50px">
-            <Text>This is the drawer</Text>
-          </Center>
+          {activeCardDrawer?.content === 'SLIDER' ? (
+            <StockSlider {...item} />
+          ) : (
+            <Center h="100%">
+              <Text>Form</Text>
+            </Center>
+          )}
         </MotionBox>
       )}
     </AnimatePresence>
