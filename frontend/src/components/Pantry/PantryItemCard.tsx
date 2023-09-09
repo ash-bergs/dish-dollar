@@ -9,6 +9,8 @@ import {
   SliderThumb,
   SliderTrack,
   Text,
+  useColorMode,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { PantryItem } from '@/types';
 import { TbStar, TbGitCommit, TbPencil, TbShoppingCart } from 'react-icons/tb';
@@ -46,12 +48,14 @@ const PantryItemCard: React.FC<PantryItemCardProps> = ({
   // we have 1 pound left
   const amountInStock = '2 pounds';
 
+  const cardBg = useColorModeValue('gray.100', 'jet');
+
   return (
     <Box
       className="pantry-card__container"
-      bg="#444140"
+      bg={cardBg}
       borderRadius="lg"
-      boxShadow="base"
+      boxShadow="md"
       p={5}
       w="full"
       key={item.id}
@@ -81,6 +85,7 @@ const PantryItemCard: React.FC<PantryItemCardProps> = ({
         right="14px"
         boxSize="6"
         color="#FFA987"
+        cursor="pointer"
       />
 
       <Flex position="absolute" bottom="12px" right="14px" gap={1}>

@@ -52,7 +52,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link: { name, href } }) => {
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const headerBg = useColorModeValue('gray.100', 'gray.700');
+  const headerBg = useColorModeValue('gray.100', 'jet');
 
   return (
     <Box bg={headerBg}>
