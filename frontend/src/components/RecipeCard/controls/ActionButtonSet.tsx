@@ -13,9 +13,7 @@ const ActionButtonSet: React.FC = () => {
       top="20px"
       right="20px"
       gap={2}
-      zIndex={3}
-      display="none" // Initially hide
-      className="action-buttons" // Used to show on hover of CardWrapper
+      className="pantry-card__action-buttons"
     >
       <IconButton {...buttonStyles} icon={<AddIcon />} aria-label="Add" />
       <IconButton
