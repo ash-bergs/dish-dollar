@@ -34,7 +34,7 @@ const PantryCard: React.FC<PantryCardProps> = ({ item }) => {
           transform: 'scale(1.02)',
         }}
         transition="all 0.2s ease-in-out"
-        zIndex={1}
+        zIndex={2}
       >
         <ItemDetail {...item} />
         <Icon

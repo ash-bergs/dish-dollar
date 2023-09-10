@@ -1,3 +1,4 @@
+// cheatsheets: https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
 // all of the props here should also be in the Recipe type
 // we just want to render more of them here, but both components are using the same type, the same data
 // let's think about ingredients - this should be a type of its own
@@ -60,4 +61,26 @@ export type PantryItem = {
   type: 'dairy' | 'produce' | 'pantry' | 'staple' | 'frozen';
   cost: number;
   costUnit: string;
+};
+
+/** Objects to support unit measurements - applies largely to Pantry items  */
+// TODO: Identify if this should go here? It's note really a type
+const commonUnits = ['pound', 'ounce', 'kilogram', 'gram', 'unit'];
+const dairyUnits = [
+  'gallon',
+  'quart',
+  'pint',
+  'cup',
+  'stick',
+  'tablespoon',
+  'teaspoon',
+  'slice',
+];
+
+export const pantryItemUnits = {
+  dairy: [...dairyUnits, ...commonUnits],
+  produce: [...commonUnits],
+  pantry: [...commonUnits],
+  staple: [...commonUnits],
+  frozen: [...commonUnits],
 };

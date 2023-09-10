@@ -39,7 +39,7 @@ const PantryDrawer: React.FC<PantryDrawerProps> = (props) => {
           mx="auto"
           bg="atomicTangerine"
           borderBottomRadius="lg"
-          zIndex={0}
+          zIndex={1}
           mt="-3"
           initial="closed"
           animate={show ? 'open' : 'closed'}
@@ -49,7 +49,7 @@ const PantryDrawer: React.FC<PantryDrawerProps> = (props) => {
           {activeCardDrawer?.content === 'SLIDER' ? (
             <StockSlider {...item} />
           ) : (
-            <EditItemForm />
+            <EditItemForm {...item} />
           )}
         </MotionBox>
       )}
