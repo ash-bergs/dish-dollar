@@ -14,6 +14,8 @@ import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 
 import { Select } from '@/components/inputs/';
 
+// TODO: add an option to add the item to shopping list upon creation
+// TODO: close the active drawer when this form opens, to prevent any weird hits to the db
 const foodTypeOptions = [
   { value: 'dairy', label: 'Dairy', icon: <TbMilk /> },
   { value: 'produce', label: 'Produce', icon: <TbApple /> },
