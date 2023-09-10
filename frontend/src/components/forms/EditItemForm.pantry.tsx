@@ -4,33 +4,22 @@ import { PantryItem, pantryItemUnits } from '@/types';
 
 import { TwoPointNumberInput, Select } from '@/components/inputs';
 
-/**
- * type SelectProps = {
-  options: {
-    value: string;
-    label: string;
-    icon?: any;
-    isDisabled?: boolean;
-  }[];
-  value: string;
-  onChange: (value: string) => void;
-};
- */
-
 const EditItemForm = (item: PantryItem): JSX.Element => {
   const {
     initialAmount: itemInitialAmount,
     unit: itemUnit,
     cost: itemCost,
   } = item;
-  const [initialAmount, setInitialAmount] = React.useState(itemInitialAmount);
-  const [cost, setCost] = React.useState(itemCost);
+  const [initialAmount, setInitialAmount] = React.useState(
+    String(itemInitialAmount)
+  );
+  const [cost, setCost] = React.useState(String(itemCost));
   const [unit, setUnit] = React.useState(itemUnit);
 
   const itemType = item.type;
   const unitTypeOptions = pantryItemUnits[itemType];
+
   // we've set up the units object, but we need to create actual options
-  // we'll use a memo
   // and map current options to the right shape
   const unitOptions = React.useMemo(() => {
     return unitTypeOptions.map((unit) => ({
@@ -39,10 +28,10 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
     }));
   }, [unitTypeOptions]);
 
+  // const [currency, setCurrency] = React.useState('USD');
   // I don't think I'll provide a way to change currency here
   // the user should set it as a profile option
   // i see little reason to track different currencies in the same pantry
-  // const [currency, setCurrency] = React.useState('USD');
   // I do need to provide a way to change the unit
   // Because a user might have bought a 2L bottle of milk instead of a 1L bottle
   // but we can still prompt the user for some guidance on how to handle this
@@ -60,7 +49,7 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
       onSubmit={handleSubmit}
       maxWidth="400px"
       margin="0 auto"
-      px={2}
+      px={1}
       py={4}
     >
       <FormControl
@@ -84,6 +73,7 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
       <FormControl mb={4}>
         {/* <FormLabel>Cost</FormLabel> */}
         <TwoPointNumberInput
+          format="$"
           value={cost}
           onChange={(value) => setCost(value)}
         />
@@ -97,48 +87,3 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
 };
 
 export default EditItemForm;
-
-/**
- *   const [currentArea, setCurrentArea] = useState(fixedInitialArea)
-  const fixedInitialArea = area.toFixed(2)
-// dynamic step for the number input
-export const getStep = (area: string) => {
-  // convert to number for comparisons
-  const parsedArea = parseInt(area)
-  if (parsedArea < 50) return 1.0
-  if (parsedArea < 200) return 5.0
-  return 10.0
-}
-  const fixedInitialArea = area.toFixed(2)
-
-
-export const inputProps = {
-  bg: "white",
-  border: "3px dashed",
-  borderRadius: "md",
-  borderColor: "gray.300",
-  color: "gray.400",
-  fontSize: "md",
-  fontFamily: "body",
-  _hover: { borderColor: "gray.400" },
-  _focusVisible: { borderColor: "gray.400" },
-}
- * 
- * <NumberInput
-            {...inputProps}
-            onChange={value => setCurrentArea(value)}
-            defaultValue={fixedInitialArea}
-            value={currentArea}
-            precision={2}
-            step={getStep(currentArea)}
-            min={0.0}
-            focusBorderColor="transparent"
-            size="sm"
-          >
-            <NumberInputField border="none" />
-            <NumberInputStepper>
-              <NumberIncrementStepper border="none" />
-              <NumberDecrementStepper border="none" />
-            </NumberInputStepper>
-          </NumberInput>
- */

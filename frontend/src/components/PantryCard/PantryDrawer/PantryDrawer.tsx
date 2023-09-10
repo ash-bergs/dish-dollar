@@ -22,8 +22,8 @@ const drawerVariants = {
     y: 0,
     transition: { type: 'spring', stiffness: 100, damping: 15 },
   },
-  closed: { opacity: 0, y: '-100%' },
-  exit: { opacity: 0, y: '-100%', transition: { duration: 0.2 } },
+  closed: { opacity: 0, y: '-50%' },
+  exit: { opacity: 0, y: '-50%', transition: { duration: 0.2 } },
 };
 
 const PantryDrawer: React.FC<PantryDrawerProps> = (props) => {
