@@ -5,8 +5,10 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Button,
+  useColorModeValue,
+  useColorMode,
 } from '@chakra-ui/react';
+import inputStyles from '@/components/inputs/styles';
 
 // created this as a component because I'll probably use this in a lot of places
 // adding recipes
@@ -32,7 +34,8 @@ const TwoPointNumberInput = ({
   format,
 }: TwoPointNumberInputProps): JSX.Element => {
   const initialAmount = defaultValue ? defaultValue : value;
-
+  const { colorMode } = useColorMode();
+  const styles = inputStyles(colorMode);
   // If a format is passed it will be prepended to the value
   // Mostly for currency symbols
   const formatValue = (val: string) => format + val;
@@ -40,6 +43,7 @@ const TwoPointNumberInput = ({
 
   return (
     <NumberInput
+      {...styles}
       defaultValue={initialAmount}
       onChange={(value) => onChange(value)}
       value={formatedValue}
@@ -47,7 +51,7 @@ const TwoPointNumberInput = ({
       step={1.0}
       min={0.0}
     >
-      <NumberInputField bg="jet" />
+      <NumberInputField />
       <NumberInputStepper>
         <NumberIncrementStepper />
         <NumberDecrementStepper />
