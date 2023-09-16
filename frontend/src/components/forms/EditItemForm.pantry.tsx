@@ -5,15 +5,15 @@ import { PantryItem, pantryItemUnits } from '@/types';
 import { TwoPointNumberInput, Select } from '@/components/inputs';
 
 const EditItemForm = (item: PantryItem): JSX.Element => {
-  console.log('item:', item);
   const {
     initialAmount: itemInitialAmount,
     unit: itemUnit,
     cost: itemCost,
   } = item;
-  const floatInitialAmount = itemInitialAmount.toFixed(2);
-  const [initialAmount, setInitialAmount] = React.useState(floatInitialAmount);
 
+  const [initialAmount, setInitialAmount] = React.useState(
+    itemInitialAmount.toFixed(2)
+  );
   const [cost, setCost] = React.useState(itemCost.toFixed(2));
   const [unit, setUnit] = React.useState(itemUnit);
 
