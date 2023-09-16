@@ -25,7 +25,7 @@ const TwoPointNumberInput = ({
   defaultValue,
   value,
   onChange,
-  format,
+  format, // TODO: implement this - https://chakra-ui.com/docs/components/number-input
 }: TwoPointNumberInputProps): JSX.Element => {
   const initialAmount = defaultValue ? defaultValue : value;
 
@@ -37,7 +37,7 @@ const TwoPointNumberInput = ({
       {...styles}
       defaultValue={initialAmount}
       onChange={(value) => onChange(value)}
-      value={`${format} ${value}`}
+      value={value}
       precision={2}
       step={1.0}
       min={0.0}

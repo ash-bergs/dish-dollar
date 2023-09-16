@@ -5,15 +5,16 @@ import { PantryItem, pantryItemUnits } from '@/types';
 import { TwoPointNumberInput, Select } from '@/components/inputs';
 
 const EditItemForm = (item: PantryItem): JSX.Element => {
+  console.log('item:', item);
   const {
     initialAmount: itemInitialAmount,
     unit: itemUnit,
     cost: itemCost,
   } = item;
-  const [initialAmount, setInitialAmount] = React.useState(
-    String(itemInitialAmount)
-  );
-  const [cost, setCost] = React.useState(String(itemCost));
+  const floatInitialAmount = itemInitialAmount.toFixed(2);
+  const [initialAmount, setInitialAmount] = React.useState(floatInitialAmount);
+
+  const [cost, setCost] = React.useState(itemCost.toFixed(2));
   const [unit, setUnit] = React.useState(itemUnit);
 
   const itemType = item.type;
@@ -27,7 +28,7 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
     }));
   }, [unitTypeOptions]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     // Handle form submission here
     console.log('Initial Amount:', initialAmount, 'Cost:', cost);
@@ -63,7 +64,7 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
       <FormControl mb={4}>
         {/* <FormLabel>Cost</FormLabel> */}
         <TwoPointNumberInput
-          format="$"
+          //format="$"
           value={cost}
           onChange={(value) => setCost(value)}
         />
