@@ -3,6 +3,7 @@ import { AddIcon, ExternalLinkIcon, QuestionIcon } from '@chakra-ui/icons';
 
 const buttonStyles = {
   borderRadius: 'full',
+  bg: 'white',
 };
 
 const ActionButtonSet: React.FC = () => {
@@ -13,7 +14,7 @@ const ActionButtonSet: React.FC = () => {
       top="20px"
       right="20px"
       gap={2}
-      className="pantry-card__action-buttons"
+      className="action-buttons"
     >
       <IconButton {...buttonStyles} icon={<AddIcon />} aria-label="Add" />
       <IconButton

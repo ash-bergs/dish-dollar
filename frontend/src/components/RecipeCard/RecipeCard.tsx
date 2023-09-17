@@ -45,7 +45,8 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
 export default RecipeCard;
 
 const CardWrapper: React.FC<CardWrapperProps> = ({ children }) => {
-  const cardBg = useColorModeValue('gray.100', 'gray.700');
+  const cardBg = useColorModeValue('white', 'jet');
+
   return (
     <Flex
       direction="column"

@@ -20,7 +20,7 @@ type Props = {
 };
 
 const SavedRecipeCard: React.FC<Props> = ({ recipe }) => {
-  const cardBg = useColorModeValue('gray.100', 'gray.700');
+  const cardBg = useColorModeValue('white', 'jet');
   const [showDetails, setShowDetails] = useState(false);
 
   const numberOfIngredients = recipe.ingredients.length;
