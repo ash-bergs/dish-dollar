@@ -44,7 +44,7 @@ const SavedRecipeCard: React.FC<Props> = ({ recipe }) => {
           .map((_, i) => (
             <StarIcon
               key={i}
-              color={i < recipe.rating ? 'teal.500' : 'gray.300'}
+              color={i < recipe.rating ? 'atomicTangerine' : 'gray.300'}
             />
           ))}
       </Flex>
