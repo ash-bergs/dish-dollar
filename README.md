@@ -15,7 +15,7 @@ Dish-Dollar is an all-in-one solution for individuals seeking to streamline thei
 ## Tech Stack
 
 - **Frontend:** Next.js with Chakra UI for a responsive and intuitive UI.
-- **Backend:** Robust backend infrastructure with Prisma.
+- **Backend:** Robust backend infrastructure with Prisma, tested with Vitest.
 
 ## Directory Structure
 
