@@ -63,6 +63,7 @@ const CardWrapper: React.FC<CardWrapperProps> = ({ children }) => {
         transform: 'scale(1.05)',
         '.action-buttons': {
           display: 'flex',
+          zIndex: 1,
         },
       }}
       position="relative"
