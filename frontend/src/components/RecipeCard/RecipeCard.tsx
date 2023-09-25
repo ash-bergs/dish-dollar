@@ -5,13 +5,13 @@ import {
   Heading,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
-import type { Recipe } from '@/types';
+import type { Recipe } from "@/types";
 
-import RecipeImage from '@/components/RecipeCard/Image';
-import StarRating from '@/components/RecipeCard/StarRating';
-import ActionButtonSet from '@/components/RecipeCard/controls/ActionButtonSet';
+import RecipeImage from "@/components/RecipeCard/Image";
+import StarRating from "@/components/RecipeCard/StarRating";
+import ActionButtonSet from "@/components/RecipeCard/controls/ActionButtonSet";
 
 type Props = {
   recipe: Recipe;
@@ -30,11 +30,11 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
         <StarRating rating={recipe.rating} />
         <Text mt={2}>{recipe.description}</Text>
         <Text>
-          <strong>Prep:</strong>{' '}
+          <strong>Prep:</strong>{" "}
           <Badge colorScheme="red">{recipe.timeToPrepare} mins</Badge>
         </Text>
         <Text>
-          <strong>Cook:</strong>{' '}
+          <strong>Cook:</strong>{" "}
           <Badge colorScheme="green">{recipe.timeToPrepare} mins</Badge>
         </Text>
       </Box>
@@ -45,27 +45,29 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
 export default RecipeCard;
 
 const CardWrapper: React.FC<CardWrapperProps> = ({ children }) => {
-  const cardBg = useColorModeValue('white', 'jet');
+  const cardBg = useColorModeValue("white", "jet");
 
   return (
     <Flex
-      direction="column"
-      justifyContent={'center'}
       bg={cardBg}
       borderRadius="md"
-      cursor="pointer"
       boxShadow="base"
-      w={{ base: '100%', md: '60%', xl: '40%' }}
+      cursor="pointer"
+      direction="column"
+      justifyContent={"center"}
       maxWidth="300px"
       minWidth="250px"
+      position="relative"
+      py="2"
+      w={{ base: "100%", md: "60%", xl: "40%" }}
       transition="all 0.2s"
       _hover={{
-        transform: 'scale(1.05)',
-        '.action-buttons': {
-          display: 'flex',
+        transform: "scale(1.05)",
+        ".action-buttons": {
+          display: "flex",
+          zIndex: 1,
         },
       }}
-      position="relative"
     >
       <ActionButtonSet />
       {children}
