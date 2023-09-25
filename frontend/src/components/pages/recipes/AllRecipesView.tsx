@@ -5,6 +5,7 @@ import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
 import { searchAtom, categoryAtom } from "@/lib/store/recipes.store";
 import ActionsBar from "./ActionsBar";
 import ExpandedRecipeCard from "../../RecipeCard/RecipeCard";
+import Header from "./Header";
 
 const AllRecipesView = () => {
   const [searchTerm] = useAtom(searchAtom);
@@ -26,7 +27,7 @@ const AllRecipesView = () => {
 
   return (
     <Box px={8} py={4}>
-      <Heading>Recipes</Heading>
+      <Header />
       <Divider my={2}/>
       <ActionsBar />
       <Flex gap={6} flexWrap={"wrap"}>
