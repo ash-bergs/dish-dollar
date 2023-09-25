@@ -20,10 +20,13 @@ const ItemActions: React.FC<PantryItem> = (item) => {
   const [activeCardDrawer, setActiveCardDrawer] = useAtom(activeCardDrawerAtom);
 
   const handleStockUpdateClick = () => {
+    // if the item id matches active and the content is already 'SLIDER', close the drawer
+    if (activeCardDrawer?.id === item.id && activeCardDrawer.content === 'SLIDER') return setActiveCardDrawer(null);
     setActiveCardDrawer({ id: item.id, content: 'SLIDER' });
   };
 
   const handleItemUpdateClick = () => {
+    if (activeCardDrawer?.id === item.id && activeCardDrawer.content === 'FORM') return setActiveCardDrawer(null);
     setActiveCardDrawer({ id: item.id, content: 'FORM' });
   };
 
