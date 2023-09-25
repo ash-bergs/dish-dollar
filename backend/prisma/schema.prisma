@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  seed = "prisma/seed.ts"
+  seed     = "prisma/seed.ts"
 }
 
 datasource db {
@@ -9,52 +9,55 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  name     String?
-  picture  String?
-  githubId Int?     @unique
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  picture   String?
+  githubId  Int?     @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Pantry {
-  id      Int     @id @default(autoincrement())
-  userId  Int     // This will be a foreign key to User.id in the database
+  id     Int @id @default(autoincrement())
+  userId Int // This will be a foreign key to User.id in the database
 }
 
+// TODO: Add cost column? How to allow cost history?
 model PantryIngredient {
-  id            Int     @id @default(autoincrement())
-  pantryId      Int     // This will be a foreign key to Pantry.id in the database
-  ingredientId  Int     // This will be a foreign key to Ingredient.id in the database
+  id              Int     @id @default(autoincrement())
+  pantryId        Int // This will be a foreign key to Pantry.id in the database
+  ingredientId    Int // This will be a foreign key to Ingredient.id in the database
   quantityInStock Float
-  initialAmount Int? // Allow option to track initial amount of ingredient 
-  unit          String?
+  initialAmount   Int? // Allow option to track initial amount of ingredient 
+  unit            String?
+  cost            Float?
 }
 
 model Ingredient {
-  id    Int    @id @default(autoincrement())
-  name  String // TODO: should this be unique? Should the table have more on it so we don't repeat ourselves?
+  id   Int    @id @default(autoincrement())
+  name String // TODO: should this be unique? Should the table have more on it so we don't repeat ourselves?
 }
 
 model RecipeIngredient {
-  id           Int    @id @default(autoincrement())
-  recipeId     Int    // This will be a foreign key to Recipe.id in the database
-  ingredientId Int    // This will be a foreign key to Ingredient.id in the database
-  quantity     Float
-  unit         String
-  substitutions Int[] 
+  id            Int    @id @default(autoincrement())
+  recipeId      Int // This will be a foreign key to Recipe.id in the database
+  ingredientId  Int // This will be a foreign key to Ingredient.id in the database
+  quantity      Float
+  unit          String
+  substitutions Int[]
+  recipe        Recipe @relation(fields: [recipeId], references: [id])
 }
 
 model Recipe {
-  id                Int              @id @default(autoincrement())
-  title             String
-  description       String
-  category          String
-  rating            Int
-  timeToPrepare     Int
-  image             String?
-  averageCostPerDish Float
-  instructions      String[]
-  userId            Int             // This will be a foreign key to User.id in the database
+  id            Int                @id @default(autoincrement())
+  title         String
+  description   String
+  category      String
+  rating        Int
+  timeToPrepare Int?
+  image         String?
+  instructions  String[]
+  ingredients   RecipeIngredient[]
+  userId        Int // This will be a foreign key to User.id in the database
 }
