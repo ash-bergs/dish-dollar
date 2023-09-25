@@ -1,14 +1,13 @@
 import { Flex, IconButton, Tooltip, useColorModeValue } from "@chakra-ui/react";
 import { AddIcon, ExternalLinkIcon, QuestionIcon } from "@chakra-ui/icons";
 
-
 const ActionButtonSet: React.FC = () => {
-  const buttonBg = useColorModeValue('white', 'jet');
+  const buttonBg = useColorModeValue("white", "jet");
 
   const buttonStyles = {
     borderRadius: "full",
     bg: buttonBg,
-    // TODO: investigate chakra's icon button styles 
+    // TODO: investigate chakra's icon button styles
     _hover: {
       bg: buttonBg,
     },
@@ -16,12 +15,12 @@ const ActionButtonSet: React.FC = () => {
 
   return (
     <Flex
-      direction="column"
-      position="absolute"
-      top="20px"
-      right="20px"
-      gap={2}
       className="action-buttons"
+      direction="column"
+      gap={2}
+      position="absolute"
+      top="33px"
+      right="25px"
     >
       <Tooltip placement="right" label="Add to your recipes">
         <IconButton {...buttonStyles} icon={<AddIcon />} aria-label="Add" />
