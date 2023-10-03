@@ -7,7 +7,7 @@ import superjson from 'superjson';
 import type { AppRouter } from '~/server/routers/_app';
 
 // function checks if the code is running in a browser
-// if it is it returns an empty string 
+// if it is it returns an empty string
 // because the TRPC server is running on the same host as the frontend
 // no need to specify the base URL
 function getBaseUrl() {
