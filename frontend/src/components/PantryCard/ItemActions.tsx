@@ -3,8 +3,8 @@ import { useAtom } from 'jotai';
 import { Flex, Icon } from '@chakra-ui/react';
 import { TbGitCommit, TbPencil, TbShoppingCart } from 'react-icons/tb';
 
-import { activeCardDrawerAtom } from '@/lib/store/pantry.store';
-import type { PantryItem } from '@/types';
+import { activeCardDrawerAtom } from '~/lib/store/pantry.store';
+import type { PantryItem } from '~/types';
 
 const IconProps = {
   boxSize: 6,
@@ -21,12 +21,17 @@ const ItemActions: React.FC<PantryItem> = (item) => {
 
   const handleStockUpdateClick = () => {
     // if the item id matches active and the content is already 'SLIDER', close the drawer
-    if (activeCardDrawer?.id === item.id && activeCardDrawer.content === 'SLIDER') return setActiveCardDrawer(null);
+    if (
+      activeCardDrawer?.id === item.id &&
+      activeCardDrawer.content === 'SLIDER'
+    )
+      return setActiveCardDrawer(null);
     setActiveCardDrawer({ id: item.id, content: 'SLIDER' });
   };
 
   const handleItemUpdateClick = () => {
-    if (activeCardDrawer?.id === item.id && activeCardDrawer.content === 'FORM') return setActiveCardDrawer(null);
+    if (activeCardDrawer?.id === item.id && activeCardDrawer.content === 'FORM')
+      return setActiveCardDrawer(null);
     setActiveCardDrawer({ id: item.id, content: 'FORM' });
   };
 

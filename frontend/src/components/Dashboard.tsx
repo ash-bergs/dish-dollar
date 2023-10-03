@@ -2,7 +2,7 @@ import { Box, Flex, Heading, List, ListItem, Checkbox } from '@chakra-ui/react';
 
 import SavedRecipeCard from './SavedRecipeCard';
 
-import { RECIPES } from '@/data';
+import { RECIPES } from '~/data';
 
 const shoppingList = [
   'Eggs',

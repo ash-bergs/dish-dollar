@@ -1,4 +1,4 @@
-import { PantryItem } from '@/types';
+import { PantryItem } from '~/types';
 
 const ingredients = [
   { id: 1, name: 'Spaghetti', substitutions: [] },

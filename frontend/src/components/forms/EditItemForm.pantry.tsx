@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, FormControl, FormLabel, Button } from '@chakra-ui/react';
-import { PantryItem, pantryItemUnits } from '@/types';
+import { PantryItem, pantryItemUnits } from '~/types';
 
-import { TwoPointNumberInput, Select } from '@/components/inputs';
+import { TwoPointNumberInput, Select } from '~/components/inputs';
 
 const EditItemForm = (item: PantryItem): JSX.Element => {
   const {

@@ -12,7 +12,7 @@ import {
 import { useDisclosure } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 
-import { Select } from '@/components/inputs/';
+import { Select } from '~/components/inputs/';
 
 // TODO: add an option to add the item to shopping list upon creation
 // TODO: close the active drawer when this form opens, to prevent any weird hits to the db

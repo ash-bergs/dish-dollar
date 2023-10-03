@@ -10,7 +10,7 @@ import {
 // TODO: Need a better icon - just a placeholder for now
 import { TbSparkles } from 'react-icons/tb';
 
-import type { PantryItem } from '@/types';
+import type { PantryItem } from '~/types';
 
 const SliderContainer = ({ children }: { children: React.ReactNode }) => {
   return (

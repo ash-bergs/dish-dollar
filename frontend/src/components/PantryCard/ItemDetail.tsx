@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Flex, Circle, Text } from '@chakra-ui/react';
-import { PantryItem } from '@/types';
+import { PantryItem } from '~/types';
 
 const getStockStatusColor = (quantity: number) => {
   if (quantity > 0.75) return '#80D39B';

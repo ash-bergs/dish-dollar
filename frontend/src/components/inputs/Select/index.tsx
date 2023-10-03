@@ -9,8 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { FiChevronDown } from 'react-icons/fi';
 
-import Option from '@/components/inputs/Select/Option';
-import inputStyles from '@/components/inputs/styles';
+import Option from '~/components/inputs/Select/Option';
+import inputStyles from '~/components/inputs/styles';
 
 type SelectProps = {
   options: {

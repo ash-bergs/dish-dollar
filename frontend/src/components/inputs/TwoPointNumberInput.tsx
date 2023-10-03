@@ -7,7 +7,7 @@ import {
   NumberDecrementStepper,
   useColorMode,
 } from '@chakra-ui/react';
-import inputStyles from '@/components/inputs/styles';
+import inputStyles from '~/components/inputs/styles';
 
 /**
  * A reusable number input component tailored for two-point precision values.

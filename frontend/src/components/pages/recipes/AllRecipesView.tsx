@@ -1,11 +1,11 @@
-import React from "react";
-import { useAtom } from "jotai";
-import { RECIPES } from "@/data";
-import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
-import { searchAtom, categoryAtom } from "@/lib/store/recipes.store";
-import ActionsBar from "./ActionsBar";
-import ExpandedRecipeCard from "../../RecipeCard/RecipeCard";
-import Header from "./Header";
+import React from 'react';
+import { useAtom } from 'jotai';
+import { RECIPES } from '~/data';
+import { Box, Divider, Flex, Heading } from '@chakra-ui/react';
+import { searchAtom, categoryAtom } from '~/lib/store/recipes.store';
+import ActionsBar from './ActionsBar';
+import ExpandedRecipeCard from '../../RecipeCard/RecipeCard';
+import Header from './Header';
 
 const AllRecipesView = () => {
   const [searchTerm] = useAtom(searchAtom);
@@ -28,9 +28,9 @@ const AllRecipesView = () => {
   return (
     <Box px={8} py={4}>
       <Header />
-      <Divider my={2}/>
+      <Divider my={2} />
       <ActionsBar />
-      <Flex gap={6} flexWrap={"wrap"}>
+      <Flex gap={6} flexWrap={'wrap'}>
         {filteredRecipes.map((recipe, index) => (
           <ExpandedRecipeCard key={index} recipe={recipe} />
         ))}

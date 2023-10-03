@@ -3,7 +3,7 @@ import { Box, Flex, Grid, VStack, Heading } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
-import PantryCard from '@/components/PantryCard';
+import PantryCard from '~/components/PantryCard';
 
 type PantryItem = {
   id: number;

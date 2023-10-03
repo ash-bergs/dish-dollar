@@ -8,7 +8,7 @@ const config = {
     return [
       {
         source: '/',
-        destination: '/all',
+        destination: '/pantry', //TODO: make a landing page
         permanent: false,
       },
     ];

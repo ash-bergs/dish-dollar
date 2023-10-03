@@ -11,7 +11,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
-import AddItemForm from '@/components/forms/AddItemForm.pantry';
+import AddItemForm from '~/components/forms/AddItemForm.pantry';
 
 function Toolbar() {
   return (

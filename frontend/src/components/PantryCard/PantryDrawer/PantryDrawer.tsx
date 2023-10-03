@@ -2,11 +2,11 @@ import React from 'react';
 import { useAtomValue } from 'jotai';
 import { Box, Center, Text } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { activeCardDrawerAtom } from '@/lib/store/pantry.store';
-import type { PantryItem } from '@/types';
+import { activeCardDrawerAtom } from '~/lib/store/pantry.store';
+import type { PantryItem } from '~/types';
 
 import StockSlider from './StockSlider';
-import { EditItemForm } from '@/components/forms';
+import { EditItemForm } from '~/components/forms';
 
 const MotionBox = motion(Box);
 

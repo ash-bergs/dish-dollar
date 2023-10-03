@@ -1,6 +1,6 @@
 import { Box, Image } from '@chakra-ui/react';
 
-import type { Recipe } from '@/types';
+import type { Recipe } from '~/types';
 
 type Props = {
   recipe: Recipe;

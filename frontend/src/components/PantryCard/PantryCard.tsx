@@ -6,8 +6,8 @@ import { TbStar } from 'react-icons/tb';
 import ItemDetail from './ItemDetail';
 import ItemActions from './ItemActions';
 import PantryDrawer from './PantryDrawer';
-import { PantryItem } from '@/types';
-import { activeCardDrawerAtom } from '@/lib/store/pantry.store';
+import { PantryItem } from '~/types';
+import { activeCardDrawerAtom } from '~/lib/store/pantry.store';
 
 type PantryCardProps = {
   item: PantryItem;

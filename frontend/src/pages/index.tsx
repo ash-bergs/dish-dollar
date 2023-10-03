@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '@/components/layout/Layout';
+import Layout from '~/components/layout/Layout';
 import Dashboard from '../components/Dashboard';
 
 import { signIn, signOut, useSession } from 'next-auth/react';

@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
-import type { Recipe } from '@/types';
+import type { Recipe } from '~/types';
 
 // SavedRecipeCard refers to the fact this card shows up on the dashboard
 // a user created or saved this recipe to their account

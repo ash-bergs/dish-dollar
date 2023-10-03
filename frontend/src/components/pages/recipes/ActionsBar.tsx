@@ -1,5 +1,5 @@
-import React from "react";
-import { useAtom } from "jotai";
+import React from 'react';
+import { useAtom } from 'jotai';
 import {
   Input,
   Box,
@@ -7,13 +7,13 @@ import {
   RadioGroup,
   Stack,
   useColorModeValue,
-} from "@chakra-ui/react";
-import { searchAtom, categoryAtom } from "@/lib/store/recipes.store";
+} from '@chakra-ui/react';
+import { searchAtom, categoryAtom } from '~/lib/store/recipes.store';
 
 export const ActionsBar = () => {
   const [searchTerm, setSearchTerm] = useAtom(searchAtom);
   const [selectedCategory, setSelectedCategory] = useAtom(categoryAtom);
-  const inputBg = useColorModeValue("white", "jet");
+  const inputBg = useColorModeValue('white', 'jet');
 
   return (
     <Box mb={6} py="2">
