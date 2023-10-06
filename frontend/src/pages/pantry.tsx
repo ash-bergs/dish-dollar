@@ -10,6 +10,7 @@ export default function Home() {
   console.log('utils', utils);
 
   const allIngredientData = utils.test.allIngredients.getData();
+
   console.log('allIngredientData', allIngredientData);
 
   return (
