@@ -107,7 +107,9 @@ const AddItemForm: React.FC = () => {
               <Button variant="primary" onClick={handleAddItem}>
                 Submit
               </Button>
-              <Button onClick={onClose}>Cancel</Button>
+              <Button variant="secondary" onClick={onClose}>
+                Cancel
+              </Button>
             </Flex>
           </VStack>
         </ModalContent>
