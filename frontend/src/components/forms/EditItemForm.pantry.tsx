@@ -70,7 +70,7 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
         />
       </FormControl>
 
-      <Button type="submit" bg="imperialRed" w="full">
+      <Button type="submit" variant="primary" w="full">
         Submit
       </Button>
     </Box>

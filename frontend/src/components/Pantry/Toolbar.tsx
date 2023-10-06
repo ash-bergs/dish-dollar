@@ -1,5 +1,5 @@
 import {
-  Box,
+  Flex,
   Button,
   Menu,
   MenuButton,
@@ -9,17 +9,21 @@ import {
   InputGroup,
   InputRightElement,
   Icon,
+  useColorMode,
 } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 import AddItemForm from '~/components/forms/AddItemForm.pantry';
+import inputStyles from '~/components/inputs/styles';
 
 function Toolbar() {
+  const { colorMode } = useColorMode();
+  const styles = inputStyles(colorMode);
   return (
-    <Box
+    <Flex
       p={4}
-      display="flex"
       justifyContent="space-between"
       alignItems="center"
+      gap={2}
       //boxShadow="base"
       //bg="white"
     >
@@ -38,12 +42,12 @@ function Toolbar() {
       <AddItemForm />
       {/* Search input */}
       <InputGroup>
-        <Input placeholder="Search by text..." />
+        <Input {...styles} placeholder="Search by text..." />
         <InputRightElement>
           <Icon as={SearchIcon} />
         </InputRightElement>
       </InputGroup>
-    </Box>
+    </Flex>
   );
 }
 
