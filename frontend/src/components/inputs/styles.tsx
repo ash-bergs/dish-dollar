@@ -7,7 +7,7 @@ import { ColorMode } from '@chakra-ui/react';
  * This utility provides styles for special cases where the theme doesn't apply.
  */
 const inputStyles = (colorMode: ColorMode) => ({
-  bg: mode('gray.100', 'jet')({ colorMode }),
+  bg: mode('white', 'jet')({ colorMode }),
   color: mode('jet', 'white')({ colorMode }),
   borderRadius: 'md',
 });

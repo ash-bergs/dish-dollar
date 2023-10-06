@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
-
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Select } from '~/components/inputs/';
 
 // TODO: add an option to add the item to shopping list upon creation
@@ -52,7 +52,13 @@ const AddItemForm: React.FC = () => {
 
   return (
     <>
-      {!isOpen && <Button onClick={onOpen}>Add an item</Button>}
+      <Button
+        variant="primary"
+        onClick={onOpen}
+        rightIcon={<ArrowForwardIcon />}
+      >
+        Add an item
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -98,7 +104,9 @@ const AddItemForm: React.FC = () => {
               />
             </Grid>
             <Flex gap={4}>
-              <Button onClick={handleAddItem}>Submit</Button>
+              <Button variant="primary" onClick={handleAddItem}>
+                Submit
+              </Button>
               <Button onClick={onClose}>Cancel</Button>
             </Flex>
           </VStack>

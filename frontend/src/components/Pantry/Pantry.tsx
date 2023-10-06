@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Box, Flex, Grid, VStack, Heading } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Grid,
+  Icon,
+  VStack,
+  Heading,
+  IconProps,
+  useColorMode,
+} from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
@@ -22,19 +31,24 @@ type PantryProps = {
   pantryItems: PantryItem[];
 };
 
+const iconProps: IconProps = {
+  boxSize: '7',
+  textShadow: 'lg',
+};
+
 // utility to map icons
 const getIconForType = (type: PantryItem['type']) => {
   switch (type) {
     case 'dairy':
-      return <TbMilk />;
+      return <Icon as={TbMilk} {...iconProps} />;
     case 'produce':
-      return <TbApple />;
+      return <Icon as={TbApple} {...iconProps} />;
     case 'pantry':
-      return <TbFridge />;
+      return <Icon as={TbFridge} {...iconProps} />;
     case 'staple':
-      return <TbPin />;
+      return <Icon as={TbPin} {...iconProps} />;
     case 'frozen':
-      return <TbIceCream />;
+      return <Icon as={TbIceCream} {...iconProps} />;
     default:
       return null;
   }
@@ -81,9 +95,15 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
       <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={6}>
         {pantryOrder.map((type) => (
           <Box key={type} w="100%">
-            <Flex mb={3}>
+            <Flex mb={3} alignContent={'center'} alignItems={'center'}>
               {getIconForType(type)}
-              <Heading size="md" ml={2}>
+              <Heading
+                as="h3"
+                fontWeight="700"
+                fontSize="24"
+                ml={1}
+                textShadow="lg"
+              >
                 {type}
               </Heading>
             </Flex>
