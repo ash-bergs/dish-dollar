@@ -8,6 +8,8 @@ import {
   Heading,
   IconProps,
   useColorMode,
+  Center,
+  Divider,
 } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
@@ -34,6 +36,7 @@ type PantryProps = {
 const iconProps: IconProps = {
   boxSize: '7',
   textShadow: 'lg',
+  color: 'atomicTangerine',
 };
 
 // utility to map icons
@@ -91,33 +94,77 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
 
   return (
     <Box height="calc(100vh - 180px)" p={8}>
+      <Heading color="raisinBlack">Pantry</Heading>
       <Toolbar />
-      <Grid h="50vh" gridTemplateColumns="1fr 1fr" gap={6}>
-        {pantryOrder.map((type) => (
-          <Box key={type} w="100%">
-            <Flex mb={3} alignContent={'center'} alignItems={'center'}>
-              {getIconForType(type)}
-              <Heading
-                as="h3"
-                fontWeight="700"
-                fontSize="24"
-                ml={1}
-                textShadow="lg"
-              >
-                {type}
-              </Heading>
-            </Flex>
-            <VStack align="start" spacing={2}>
-              {groupedItems[type]?.map((item) => (
-                <PantryCard
-                  key={item.id}
-                  item={item}
-                  // handleChange={handleStockChange}
-                />
-              ))}
-            </VStack>
-          </Box>
-        ))}
+      <Grid
+        h="50vh"
+        gridTemplateColumns={{
+          sm: '1fr',
+          md: 'repeat(2, 1fr)',
+          xl: 'repeat(3, 1fr)',
+        }}
+        gap={6}
+      >
+        {pantryOrder.map((type) => {
+          // capitalize first letter of type
+          const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
+          return (
+            <Box
+              key={type}
+              w="100%"
+              bg="white"
+              borderRadius="lg"
+              px={8}
+              py={6}
+              boxShadow="inset .5px 2px 5px 0px rgba(0, 0, 0, 0.10)"
+            >
+              <Flex mb={3} alignContent={'center'} alignItems={'center'}>
+                <Box position="relative" mr="4">
+                  <Center
+                    boxShadow="0px 1px 10px .10px rgba(0, 0, 0, 0.10)"
+                    borderRadius="full"
+                    p={4}
+                    bg="rgba(255, 255, 255, 0.2)"
+                  >
+                    {getIconForType(type)}
+
+                    <Box
+                      position="absolute"
+                      top="10%"
+                      left="0"
+                      right="0"
+                      bottom="0"
+                      bg="linear-gradient(rgba(255, 255, 255, 0.5), transparent)" // Glassy reflection gradient
+                      borderRadius="full"
+                      pointerEvents="none"
+                    />
+                  </Center>
+                </Box>
+                <Flex direction="column" w="full">
+                  <Heading
+                    as="h3"
+                    color="jet"
+                    fontSize="26"
+                    textShadow="lg"
+                    fontWeight="semibold"
+                  >
+                    {capitalizedType}
+                  </Heading>
+                  <Divider borderColor="jet" opacity="30%" pt={2} />
+                </Flex>
+              </Flex>
+              <VStack align="start" spacing={2}>
+                {groupedItems[type]?.map((item) => (
+                  <PantryCard
+                    key={item.id}
+                    item={item}
+                    // handleChange={handleStockChange}
+                  />
+                ))}
+              </VStack>
+            </Box>
+          );
+        })}
       </Grid>
     </Box>
   );

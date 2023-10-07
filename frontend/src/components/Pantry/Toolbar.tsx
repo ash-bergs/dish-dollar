@@ -19,18 +19,11 @@ function Toolbar() {
   const { colorMode } = useColorMode();
   const styles = inputStyles(colorMode);
   return (
-    <Flex
-      p={4}
-      justifyContent="space-between"
-      alignItems="center"
-      gap={2}
-      //boxShadow="base"
-      //bg="white"
-    >
+    <Flex py={6} justifyContent="space-between" alignItems="center" gap={3}>
       {/* Filter dropdown */}
       <Menu>
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          Filter
+        <MenuButton variant="secondary" as={Button}>
+          Filter <ChevronDownIcon />
         </MenuButton>
         <MenuList>
           {/* Placeholder menu items for filters, replace with select or radio components later */}
