@@ -1,7 +1,11 @@
-import React from 'react';
-import { Box, Center, useColorMode } from '@chakra-ui/react';
+import React, { ReactElement } from 'react';
+import { Box, Center, IconProps, useColorMode } from '@chakra-ui/react';
 
-const GlassIcon = ({ icon }: { icon: any }) => {
+type GlassIconProps = {
+  icon: ReactElement<IconProps>;
+};
+
+const GlassIcon = ({ icon }: GlassIconProps) => {
   const { colorMode } = useColorMode();
 
   const boxShadow =
