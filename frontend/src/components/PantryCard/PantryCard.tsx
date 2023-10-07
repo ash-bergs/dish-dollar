@@ -11,7 +11,7 @@ import { activeCardDrawerAtom } from '~/lib/store/pantry.store';
 
 type PantryCardProps = {
   item: PantryItem;
-  //handleChange: (id: number, quantityInStock: number) => void; // will restore this when we have the slider
+  //handleChange: (id: number, quantityInStock: number) => void ; // will restore this when we have the slider
 };
 
 const PantryCard = ({ item }: PantryCardProps) => {

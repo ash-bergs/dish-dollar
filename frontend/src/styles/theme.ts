@@ -46,8 +46,8 @@ const customTheme = extendTheme({
     },
   },
   fonts: {
-    body: 'Open Sans, sans-serif',
-    heading: 'Onest, sans-serif',
+    body: '"Open Sans", sans-serif',
+    heading: '"Red Hat Display", sans-serif',
   },
   styles,
 });
