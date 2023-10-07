@@ -8,7 +8,6 @@ import {
   Heading,
   IconProps,
   useColorModeValue,
-  Center,
   Divider,
 } from '@chakra-ui/react';
 import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
@@ -16,6 +15,7 @@ import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 import Toolbar from './Toolbar';
 import PantryCard from '~/components/PantryCard';
 import GlassIcon from '~/components/GlassIcon';
+import { InsetShadowBox } from '~/components/layout/containers';
 
 type PantryItem = {
   id: number;
@@ -112,15 +112,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
           // capitalize first letter of type
           const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
           return (
-            <Box
-              key={type}
-              w="100%"
-              bg={bg}
-              borderRadius="lg"
-              px={8}
-              py={6}
-              boxShadow="inset .5px 2px 5px 0px rgba(0, 0, 0, 0.10)"
-            >
+            <InsetShadowBox key={type}>
               <Flex mb={3} alignContent={'center'} alignItems={'center'}>
                 <GlassIcon icon={getIconForType(type)} />
                 <Flex direction="column" w="full">
@@ -144,7 +136,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
                   />
                 ))}
               </VStack>
-            </Box>
+            </InsetShadowBox>
           );
         })}
       </Grid>
