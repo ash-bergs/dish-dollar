@@ -14,7 +14,7 @@ type PantryCardProps = {
   //handleChange: (id: number, quantityInStock: number) => void; // will restore this when we have the slider
 };
 
-const PantryCard: React.FC<PantryCardProps> = ({ item }) => {
+const PantryCard = ({ item }: PantryCardProps) => {
   const activeCardDrawer = useAtomValue(activeCardDrawerAtom);
   const isActiveCard = activeCardDrawer?.id === item.id;
 

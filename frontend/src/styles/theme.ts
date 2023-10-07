@@ -11,6 +11,24 @@ const styles = {
       color: mode(colors.raisinBlack, colors.seashell)(props),
       bg: mode(colors.seashell, colors.raisinBlack)(props),
     },
+    h1: {
+      color: mode(colors.jet, 'white')(props),
+    },
+    h2: {
+      color: mode(colors.jet, 'white')(props),
+    },
+    h3: {
+      color: mode(colors.jet, 'white')(props),
+    },
+    h4: {
+      color: mode(colors.jet, 'white')(props),
+    },
+    h5: {
+      color: mode(colors.jet, 'white')(props),
+    },
+    h6: {
+      color: mode(colors.jet, 'white')(props),
+    },
   }),
 };
 

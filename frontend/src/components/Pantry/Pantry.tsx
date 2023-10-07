@@ -7,7 +7,7 @@ import {
   VStack,
   Heading,
   IconProps,
-  useColorMode,
+  useColorModeValue,
   Center,
   Divider,
 } from '@chakra-ui/react';
@@ -15,6 +15,7 @@ import { TbPin, TbFridge, TbIceCream, TbApple, TbMilk } from 'react-icons/tb';
 /** component imports */
 import Toolbar from './Toolbar';
 import PantryCard from '~/components/PantryCard';
+import GlassIcon from '~/components/GlassIcon';
 
 type PantryItem = {
   id: number;
@@ -92,9 +93,11 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
     'staple',
   ]);
 
+  const bg = useColorModeValue('white', 'jet');
+
   return (
     <Box height="calc(100vh - 180px)" p={8}>
-      <Heading color="raisinBlack">Pantry</Heading>
+      <Heading>Pantry</Heading>
       <Toolbar />
       <Grid
         h="50vh"
@@ -112,45 +115,24 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
             <Box
               key={type}
               w="100%"
-              bg="white"
+              bg={bg}
               borderRadius="lg"
               px={8}
               py={6}
               boxShadow="inset .5px 2px 5px 0px rgba(0, 0, 0, 0.10)"
             >
               <Flex mb={3} alignContent={'center'} alignItems={'center'}>
-                <Box position="relative" mr="4">
-                  <Center
-                    boxShadow="0px 1px 10px .10px rgba(0, 0, 0, 0.10)"
-                    borderRadius="full"
-                    p={4}
-                    bg="rgba(255, 255, 255, 0.2)"
-                  >
-                    {getIconForType(type)}
-
-                    <Box
-                      position="absolute"
-                      top="10%"
-                      left="0"
-                      right="0"
-                      bottom="0"
-                      bg="linear-gradient(rgba(255, 255, 255, 0.5), transparent)" // Glassy reflection gradient
-                      borderRadius="full"
-                      pointerEvents="none"
-                    />
-                  </Center>
-                </Box>
+                <GlassIcon icon={getIconForType(type)} />
                 <Flex direction="column" w="full">
                   <Heading
                     as="h3"
-                    color="jet"
                     fontSize="26"
                     textShadow="lg"
                     fontWeight="semibold"
                   >
                     {capitalizedType}
                   </Heading>
-                  <Divider borderColor="jet" opacity="30%" pt={2} />
+                  <Divider borderColor="raisinBlack" opacity="30%" pt={2} />
                 </Flex>
               </Flex>
               <VStack align="start" spacing={2}>
