@@ -1,21 +1,8 @@
-import { Box, Flex, Heading, List, ListItem, Checkbox } from '@chakra-ui/react';
-
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import SavedRecipeCard from './SavedRecipeCard';
+import ShoppingList from './ShoppingList';
 
 import { RECIPES } from '~/data';
-
-const shoppingList = [
-  'Eggs',
-  'Milk',
-  'Bread',
-  'Sour Cream',
-  'Butter',
-  'Salt',
-  'Pepper',
-  'Olive Oil',
-  'Chicken',
-  'Beef',
-];
 
 const Dashboard = () => {
   return (
@@ -32,19 +19,7 @@ const Dashboard = () => {
           ))}
         </Box>
 
-        {/* Shopping List */}
-        <Box flex="1" overflowY="auto" p={4}>
-          <Heading size="lg" mb={4}>
-            Shopping List
-          </Heading>
-          <List spacing={3}>
-            {shoppingList.map((item, index) => (
-              <ListItem key={index}>
-                <Checkbox size="lg">{item}</Checkbox>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+        <ShoppingList />
       </Flex>
     </Flex>
   );
