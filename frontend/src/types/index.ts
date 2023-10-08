@@ -84,3 +84,8 @@ export const pantryItemUnits = {
   staple: [...commonUnits],
   frozen: [...commonUnits],
 };
+
+// 🏗️ Component types
+//TODO: Types module - what's the best way? Research this
+// Make children prop required
+export type PropsWithChildren<P = unknown> = P & { children: React.ReactNode };
