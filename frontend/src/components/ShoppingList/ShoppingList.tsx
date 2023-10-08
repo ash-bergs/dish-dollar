@@ -1,17 +1,8 @@
 import React from 'react';
-import {
-  Box,
-  Checkbox,
-  Divider,
-  Flex,
-  Icon,
-  Heading,
-  List,
-  ListItem,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Divider, Flex, Icon, Heading, Text } from '@chakra-ui/react';
 import GlassIcon from '~/components/GlassIcon';
 import { InsetShadowBox } from '~/components/layout/containers';
+import List from './List';
 import { TbShoppingCart } from 'react-icons/tb';
 
 const shoppingList = [
@@ -30,7 +21,7 @@ const ShoppingList = () => {
   return (
     <Box flex="1" overflowY="auto" p={4}>
       <InsetShadowBox>
-        <Flex pb={8}>
+        <Flex py={2}>
           <GlassIcon
             icon={
               <Icon as={TbShoppingCart} boxSize={8} color="atomicTangerine" />
@@ -56,13 +47,7 @@ const ShoppingList = () => {
           </Box>
         </Flex>
 
-        <List spacing={3}>
-          {shoppingList.map((item, index) => (
-            <ListItem key={index}>
-              <Checkbox size="lg">{item}</Checkbox>
-            </ListItem>
-          ))}
-        </List>
+        <List list={shoppingList} />
       </InsetShadowBox>
     </Box>
   );
