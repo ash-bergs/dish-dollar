@@ -2,34 +2,14 @@ import React from 'react';
 import {
   Box,
   Checkbox,
-  Divider,
   Flex,
   Icon,
-  Heading,
   List as ChakraList,
   ListItem,
   Text,
 } from '@chakra-ui/react';
-
-import GlassIcon from '~/components/GlassIcon';
-import { CardContainer, InsetShadowBox } from '~/components/layout/containers';
-import { TbShoppingCart, TbPencil, TbStar } from 'react-icons/tb';
-
-/**
- * <Box>
-      <Flex alignItems="center">
-        <Circle size="4" bg={getStockStatusColor(quantityInStock)} />
-
-        <Box ml={3}>
-          <Text fontSize="xs" fontStyle="italic">
-            {amountInStock}
-          </Text>
-          <Text fontSize="24px">{name}</Text>
-        </Box>
-      </Flex>
-    </Box>
-<Checkbox size="lg">{item}</Checkbox>
- */
+import { CardContainer } from '~/components/layout/containers';
+import { TbPencil, TbStar } from 'react-icons/tb';
 
 const List = ({ list }: { list: string[] }) => {
   return (

@@ -1,13 +1,14 @@
 import React from 'react';
-import { useAtomValue } from 'jotai';
-import { Box, Icon, useColorModeValue } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react';
 import { TbStar } from 'react-icons/tb';
+import { useAtomValue } from 'jotai';
+import { activeCardDrawerAtom } from '~/lib/store/pantry.store';
 
+import { CardContainer } from '~/components/layout/containers';
 import ItemDetail from './ItemDetail';
 import ItemActions from './ItemActions';
 import PantryDrawer from './PantryDrawer';
 import { PantryItem } from '~/types';
-import { activeCardDrawerAtom } from '~/lib/store/pantry.store';
 
 type PantryCardProps = {
   item: PantryItem;
@@ -18,24 +19,9 @@ const PantryCard = ({ item }: PantryCardProps) => {
   const activeCardDrawer = useAtomValue(activeCardDrawerAtom);
   const isActiveCard = activeCardDrawer?.id === item.id;
 
-  const cardBg = useColorModeValue('white', 'jet');
   return (
     <>
-      <Box
-        className="pantry-card__container"
-        bg={cardBg}
-        borderRadius="lg"
-        boxShadow="md"
-        p={5}
-        w="full"
-        key={item.id}
-        position="relative"
-        _hover={{
-          transform: 'scale(1.02)',
-        }}
-        transition="all 0.2s ease-in-out"
-        zIndex={2}
-      >
+      <CardContainer>
         <ItemDetail {...item} />
         <Icon
           as={TbStar}
@@ -47,7 +33,7 @@ const PantryCard = ({ item }: PantryCardProps) => {
           cursor="pointer"
         />
         <ItemActions {...item} />
-      </Box>
+      </CardContainer>
       <PantryDrawer show={isActiveCard} item={item} />
     </>
   );
