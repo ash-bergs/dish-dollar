@@ -15,8 +15,6 @@ const InsetShadowBox = ({ children }: InsetShadowBoxProps) => {
       h="full"
       bg={bg}
       borderRadius="lg"
-      px={8}
-      py={6}
       boxShadow="inset .5px 2px 5px 0px rgba(0, 0, 0, 0.10)"
       overflowY={'scroll'}
       sx={{
