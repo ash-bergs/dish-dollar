@@ -113,21 +113,30 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
           const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
           return (
             <InsetShadowBox key={type}>
-              <Flex mb={3} alignContent={'center'} alignItems={'center'}>
-                <GlassIcon icon={getIconForType(type)} />
-                <Flex direction="column" w="full">
-                  <Heading
-                    as="h3"
-                    fontSize="26"
-                    textShadow="lg"
-                    fontWeight="semibold"
-                  >
-                    {capitalizedType}
-                  </Heading>
-                  <Divider borderColor="raisinBlack" opacity="30%" pt={2} />
+              <Flex
+                alignContent={'center'}
+                alignItems={'center'}
+                position="sticky"
+                top={0}
+                zIndex={1}
+                bg="white"
+              >
+                <Flex w="full" px={8} pt={6} mb={1}>
+                  <GlassIcon icon={getIconForType(type)} />
+                  <Flex direction="column" w="full">
+                    <Heading
+                      as="h3"
+                      fontSize="26"
+                      textShadow="lg"
+                      fontWeight="semibold"
+                    >
+                      {capitalizedType}
+                    </Heading>
+                    <Divider borderColor="raisinBlack" opacity="30%" pt={2} />
+                  </Flex>
                 </Flex>
               </Flex>
-              <VStack align="start" spacing={2}>
+              <VStack align="start" spacing={2} px={8} pb={4}>
                 {groupedItems[type]?.map((item) => (
                   <PantryCard
                     key={item.id}

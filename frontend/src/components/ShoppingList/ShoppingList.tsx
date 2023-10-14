@@ -21,7 +21,7 @@ const ShoppingList = () => {
   return (
     <Box flex="1" overflowY="auto" p={4}>
       <InsetShadowBox>
-        <Flex py={2}>
+        <Flex position="sticky" top={0} zIndex={1} background="white">
           <GlassIcon
             icon={
               <Icon as={TbShoppingCart} boxSize={8} color="atomicTangerine" />
