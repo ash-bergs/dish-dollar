@@ -119,7 +119,7 @@ const Pantry: React.FC<PantryProps> = ({ pantryItems }) => {
                 position="sticky"
                 top={0}
                 zIndex={1}
-                bg="white"
+                bg={bg}
               >
                 <Flex w="full" px={8} pt={6} mb={1}>
                   <GlassIcon icon={getIconForType(type)} />

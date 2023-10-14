@@ -8,9 +8,9 @@ const Dashboard = () => {
   return (
     <Flex>
       {/* Content */}
-      <Flex flexGrow={1} overflow="hidden" height="calc(100vh - 180px)">
+      <Flex flexGrow={1} overflow="hidden" height="calc(100vh - 80px)">
         {/* Recipe Cards */}
-        <Box flex="2" overflowY="auto" p={4} borderRightWidth="1px">
+        <Box flex={2} overflowY="auto" p={4} borderRightWidth="1px">
           <Heading size="xl" mb={4}>
             Your Recipes
           </Heading>
