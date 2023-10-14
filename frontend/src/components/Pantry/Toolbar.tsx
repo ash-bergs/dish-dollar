@@ -19,7 +19,14 @@ function Toolbar() {
   const { colorMode } = useColorMode();
   const styles = inputStyles(colorMode);
   return (
-    <Flex py={6} justifyContent="space-between" alignItems="center" gap={3}>
+    <Flex
+      py={6}
+      justifyContent="space-between"
+      alignItems="center"
+      gap={3}
+      zIndex={4}
+      position="relative"
+    >
       {/* Filter dropdown */}
       <Menu>
         <MenuButton variant="secondary" as={Button}>

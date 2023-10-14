@@ -54,11 +54,14 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
           value={initialAmount}
           onChange={(value) => setInitialAmount(value)}
         />
-        <Select
+        {/* <Select
           options={unitOptions}
           value={unit}
           onChange={(value) => setUnit(value)}
-        />
+        /> 
+        Rethink this component/form
+        Maybe a numberInputField from chakra, that when clicked opens a modal with the selections for unit
+        */}
       </FormControl>
 
       <FormControl mb={4}>

@@ -39,7 +39,7 @@ const PantryDrawer: React.FC<PantryDrawerProps> = (props) => {
           mx="auto"
           bg="atomicTangerine"
           borderBottomRadius="lg"
-          zIndex={1}
+          zIndex={0}
           mt="-3"
           initial="closed"
           animate={show ? 'open' : 'closed'}
