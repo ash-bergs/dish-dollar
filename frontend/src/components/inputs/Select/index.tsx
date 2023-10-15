@@ -1,4 +1,5 @@
 import {
+  Box,
   Flex,
   Icon,
   Menu,
@@ -29,7 +30,7 @@ const Select: React.FC<SelectProps> = ({ options, value, onChange }) => {
   return (
     <Menu>
       {({ isOpen }) => (
-        <>
+        <Box zIndex={100} position="relative">
           <MenuButton {...styles} borderRadius="md" overflow={'hidden'}>
             <Flex
               px={2}
@@ -54,7 +55,7 @@ const Select: React.FC<SelectProps> = ({ options, value, onChange }) => {
               />
             ))}
           </MenuList>
-        </>
+        </Box>
       )}
     </Menu>
   );

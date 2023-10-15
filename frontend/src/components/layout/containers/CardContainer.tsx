@@ -18,6 +18,7 @@ const CardContainer = ({ children }: CardContainerProps) => {
       }}
       position="relative"
       transition="all 0.2s ease-in-out"
+      zIndex={2}
     >
       {children}
     </Box>

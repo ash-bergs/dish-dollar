@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, FormControl, FormLabel, Button } from '@chakra-ui/react';
+import { Box, FormControl, FormLabel, Button, Modal } from '@chakra-ui/react';
 import { PantryItem, pantryItemUnits } from '~/types';
-
+import UnitSelectForm from './UnitSelectForm.pantry';
 import { TwoPointNumberInput, Select } from '~/components/inputs';
 
 const EditItemForm = (item: PantryItem): JSX.Element => {
@@ -46,19 +46,14 @@ const EditItemForm = (item: PantryItem): JSX.Element => {
       <FormControl
         mb={4}
         display="grid"
-        gridTemplateColumns={'2fr 1fr'}
+        gridTemplateColumns={'1fr auto'}
         gap="2"
       >
-        {/* <FormLabel>Weight (volume)</FormLabel> */}
         <TwoPointNumberInput
           value={initialAmount}
           onChange={(value) => setInitialAmount(value)}
         />
-        <Select
-          options={unitOptions}
-          value={unit}
-          onChange={(value) => setUnit(value)}
-        />
+        <UnitSelectForm />
       </FormControl>
 
       <FormControl mb={4}>
