@@ -18,7 +18,7 @@ import GlassIcon from '~/components/GlassIcon';
 import { InsetShadowBox } from '~/components/layout/containers';
 
 type PantryItem = {
-  id: number;
+  id: string;
   pantryId: number;
   ingredientId: number;
   initialAmount: number;

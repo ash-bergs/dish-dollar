@@ -5,8 +5,8 @@ import {
   Grid,
   Modal,
   Input,
-  VStack,
   ModalOverlay,
+  ModalHeader,
   ModalContent,
 } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
@@ -29,11 +29,13 @@ const currencyTypeOptions = [
   { value: 'pounds', label: 'Pounds' },
 ];
 
+// TODO: Create a constants and add all measurements data there
 const unitOptions = [
   { value: 'kg', label: 'Kilogram' },
   { value: 'g', label: 'Gram' },
   { value: 'l', label: 'Liter' },
   { value: 'ml', label: 'Milliliter' },
+  { value: 'gallon', label: 'Gallon' },
 ];
 
 const AddItemForm: React.FC = () => {
@@ -62,8 +64,9 @@ const AddItemForm: React.FC = () => {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent px={4} py={8}>
-          <VStack spacing={4}>
+        <ModalContent px={4}>
+          <ModalHeader>Add a Food Item</ModalHeader>
+          <Grid gridTemplateColumns={'3fr 1fr'} gap={4}>
             <Input
               placeholder="Item name"
               value={itemName}
@@ -75,43 +78,42 @@ const AddItemForm: React.FC = () => {
               value={itemType}
               onChange={(value) => setItemType(value)}
             />
-            <Grid gridTemplateColumns="1fr 1fr" gap={4}>
-              <Input
-                placeholder="Initial amount"
-                type="number"
-                value={initialAmount}
-                onChange={(e) => setInitialAmount(e.target.value)}
-                maxW="400px"
-              />
-              <Select
-                options={unitOptions}
-                value={unit}
-                onChange={(value) => setUnit(value)}
-              />
-            </Grid>
-            <Grid gridTemplateColumns="1fr 1fr" gap={4}>
-              <Input
-                placeholder="Cost"
-                type="number"
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
-                maxW="400px"
-              />
-              <Select
-                options={currencyTypeOptions}
-                value={currency}
-                onChange={(value) => setCurrency(value)}
-              />
-            </Grid>
-            <Flex gap={4}>
-              <Button variant="primary" onClick={handleAddItem}>
-                Submit
-              </Button>
-              <Button variant="secondary" onClick={onClose}>
-                Cancel
-              </Button>
-            </Flex>
-          </VStack>
+
+            <Input
+              placeholder="Initial amount"
+              type="number"
+              value={initialAmount}
+              onChange={(e) => setInitialAmount(e.target.value)}
+              maxW="400px"
+            />
+            <Select
+              options={unitOptions}
+              value={unit}
+              onChange={(value) => setUnit(value)}
+            />
+
+            <Input
+              placeholder="Cost"
+              type="number"
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
+              maxW="400px"
+            />
+            <Select
+              options={currencyTypeOptions}
+              value={currency}
+              onChange={(value) => setCurrency(value)}
+            />
+          </Grid>
+
+          <Flex gap={4} justify="center" py={8}>
+            <Button variant="primary" onClick={handleAddItem}>
+              Submit
+            </Button>
+            <Button variant="secondary" onClick={onClose}>
+              Cancel
+            </Button>
+          </Flex>
         </ModalContent>
       </Modal>
     </>
