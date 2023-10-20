@@ -51,7 +51,7 @@ export type Recipe = {
  */
 
 export type PantryItem = {
-  id: number;
+  id: string;
   pantryId: number;
   ingredientId: number;
   initialAmount: number;

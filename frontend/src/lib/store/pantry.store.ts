@@ -1,4 +1,6 @@
-import { atom } from 'jotai';
+import { atom, Getter } from 'jotai';
+import { PantryItem } from '../../types';
+import axios from 'axios';
 
 // If value is { id: 3, content: 'FORM' },
 // it means the drawer for card with id=3 is open, and it should show the form content.
@@ -9,3 +11,23 @@ export const activeCardDrawerAtom = atom<{
   id: number;
   content: 'SLIDER' | 'FORM';
 } | null>(null);
+
+// implementing atom with refresh recipe - https://jotai.org/docs/recipes/atom-with-refresh
+export function atomWithRefresh<T>(fn: (get: Getter) => T) {
+  const refreshCounter = atom(0);
+
+  return atom(
+    (get) => {
+      get(refreshCounter);
+      return fn(get);
+    },
+    (_, set) => set(refreshCounter, (i) => i + 1)
+  );
+}
+
+export const PantryItemsAtom = atomWithRefresh<Promise<PantryItem[]>>(
+  async (get) => {
+    const res = await axios.get('/api/pantryItems');
+    return res;
+  }
+);

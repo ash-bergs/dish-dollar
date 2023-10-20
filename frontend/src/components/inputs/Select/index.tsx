@@ -30,7 +30,7 @@ const Select: React.FC<SelectProps> = ({ options, value, onChange }) => {
   return (
     <Menu>
       {({ isOpen }) => (
-        <Box zIndex={100} position="relative">
+        <Box position="relative">
           <MenuButton {...styles} borderRadius="md" overflow={'hidden'}>
             <Flex
               px={2}

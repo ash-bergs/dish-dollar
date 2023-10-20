@@ -27,6 +27,7 @@ const UnitSelectForm: React.FC = () => {
   const unitsByCategory = {
     metric: ['kg', 'g', 'ml', 'L'],
     imperial: ['lb', 'oz', 'cup', 'gal'],
+    counting: ['package', 'dozen', 'piece', 'slice', 'unit'],
   };
 
   return (
@@ -39,7 +40,9 @@ const UnitSelectForm: React.FC = () => {
         <ModalOverlay />
         <ModalContent px={4} py={8}>
           <Flex justifyContent="space-between" alignItems="center" mb={4}>
-            <Text>Select Unit:</Text>
+            <Text fontFamily={'heading'} fontWeight="bold">
+              Select Unit:
+            </Text>
             <HStack spacing={4}>
               <Text>Imperial</Text>
               <Switch
@@ -67,6 +70,19 @@ const UnitSelectForm: React.FC = () => {
                     {unitOption}
                   </Button>
                 ))}
+          </Grid>
+          <Text fontFamily={'heading'} fontWeight="bold" py={4}>
+            Non-Standard:
+          </Text>
+          <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+            {unitsByCategory.counting.map((unitOption) => (
+              <Button
+                key={unitOption}
+                onClick={() => handleUpdateItemUnit(unitOption)}
+              >
+                {unitOption}
+              </Button>
+            ))}
           </Grid>
         </ModalContent>
       </Modal>
