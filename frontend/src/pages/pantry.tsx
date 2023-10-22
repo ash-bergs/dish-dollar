@@ -1,22 +1,47 @@
+import React from 'react';
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import Layout from '~/components/layout/Layout';
 import Pantry from '~/components/Pantry';
 import { pantryItems } from '~/data';
 import { PantryItemsAtom } from '~/lib/store/pantry.store';
-// working here
+import type { PantryItem } from '~/types';
 import { trpc } from '~/utils/trpc';
 
 //TODO: move Pantry to /page directory -> rename to PantryView
-export default function Home() {
-  const test = fetch('/api/pantryItems').then((res) => res.json());
+export default function Home({ pantryItems }: { pantryItems: PantryItem[] }) {
+  const [pantryItemsAtom, setPantryItemsAtom] = useAtom(PantryItemsAtom);
 
-  const axiosTest = axios.get('/api/pantryItems').then((res) => res);
-  console.log('axios test', axiosTest);
-  console.log(test);
-  return (
-    <Layout>
-      <Pantry pantryItems={pantryItems} />
-    </Layout>
-  );
+  React.useEffect(() => {
+    // testing
+    const fetchData = async () => {
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      await sleep(1000);
+      return 'Hello World';
+    };
+
+    const result = fetchData().catch(console.error); // <-- This will return a promise
+
+    console.log('result', result);
+  }, []);
+  console.log('pantryItemsAtom', pantryItemsAtom);
+  return <Layout>{/* <Pantry pantryItems={pantryItems} /> */}</Layout>;
 }
+
+// can't do this with mirage - will need to use trpc
+// export async function getServerSideProps() {
+//   // const pantryItems = await axios
+//   //   .get('/api/pantryItems')
+//   //   .then((res) => res.data);
+//   const pantryItems = [];
+//   console.log('pantryItems', pantryItems);
+
+//   return {
+//     props: {
+//       pantryItems,
+//     },
+//   };
+// }

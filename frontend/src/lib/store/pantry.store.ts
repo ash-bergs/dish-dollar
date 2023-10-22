@@ -1,5 +1,5 @@
 import { atom, Getter } from 'jotai';
-import { PantryItem } from '../../types';
+import { PantryItem } from '~/types';
 import axios from 'axios';
 
 // If value is { id: 3, content: 'FORM' },
@@ -25,9 +25,4 @@ export function atomWithRefresh<T>(fn: (get: Getter) => T) {
   );
 }
 
-export const PantryItemsAtom = atomWithRefresh<Promise<PantryItem[]>>(
-  async (get) => {
-    const res = await axios.get('/api/pantryItems');
-    return res;
-  }
-);
+export const PantryItemsAtom = atom<PantryItem[]>([]);
