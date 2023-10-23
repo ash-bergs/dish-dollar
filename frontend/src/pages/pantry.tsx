@@ -23,25 +23,10 @@ export default function Home({ pantryItems }: { pantryItems: PantryItem[] }) {
       return 'Hello World';
     };
 
-    const result = fetchData().catch(console.error); // <-- This will return a promise
+    const result = fetchData().catch(console.error);
 
     console.log('result', result);
   }, []);
   console.log('pantryItemsAtom', pantryItemsAtom);
   return <Layout>{/* <Pantry pantryItems={pantryItems} /> */}</Layout>;
 }
-
-// can't do this with mirage - will need to use trpc
-// export async function getServerSideProps() {
-//   // const pantryItems = await axios
-//   //   .get('/api/pantryItems')
-//   //   .then((res) => res.data);
-//   const pantryItems = [];
-//   console.log('pantryItems', pantryItems);
-
-//   return {
-//     props: {
-//       pantryItems,
-//     },
-//   };
-// }
